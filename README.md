@@ -1,8 +1,3 @@
-# learning java0
-
-
-
-## Getting started
 
 This is a project to learn Java, additional tools and frameworks. In this project I am going to gain basic knowledge of Git, teamwork skills.
 ---
@@ -20,6 +15,6 @@ This is a project to learn Java, additional tools and frameworks. In this projec
 
 ---
 
-___Great thanks___ to [@kulch.roma](https://gitlab.com/kulch.roman) for help with learning and for mentoring!
+___Great thanks___ to [@kulch.roman](https://gitlab.com/kulch.roman) for help with learning and for mentoring!
 
 
