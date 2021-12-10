@@ -1,0 +1,23 @@
+variables:
+  BUILD_DIR: 'build'
+
+stages:
+ - build stage
+
+build_linux:
+  variables:
+    QT_QPA_PLATFORM: "offscreen"
+  dependencies: []
+  tags:
+    - linux
+  stage: build stage
+  script:
+    - mkdir $BUILD_DIR && cd $BUILD_DIR
+    - find .. -name "*.java" > sources.txt
+    - javac -Werror -verbose -d .  @sources.txt
+  only: ['merge_requests', 'master']
+  artifacts:
+    name: "build artifacts"
+    paths:
+     - $BUILD_DIR
+    expire_in: 10 hrs
