@@ -1,15 +1,17 @@
 package ua.edu.shtoiko.atmsimulator;
 
+
 /**
  * to get avaliable banknotes in ATM
  */
-public abstract class AvaliableBanknotes{
+public abstract class AvaliableBanknotes {
 
     /**
      * filling the array with banknotes
+     *
      * @return array with banknotes
      */
-    public static int[] banknotesInATM(){
+    public static int[] banknotesInATM() {
         int[] banknotes = new int[5];
         banknotes[0] = ATMresource.getThousand();
         banknotes[1] = ATMresource.getFiveHundred();
