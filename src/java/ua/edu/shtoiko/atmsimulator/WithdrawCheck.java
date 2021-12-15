@@ -12,6 +12,7 @@ public abstract class WithdrawCheck {
      * @return array with banknotes
      */
     public static int[] withdrawRequest(int sumOfWithdraw) {
+        if (TestTotalBanknotes.testTotalBanknotes()) {
             int[] withdrawBanknotes = new int[5];
             if (sumOfWithdraw <= 0) {
                 System.out.println("Incorect withdraw sum!");
@@ -24,6 +25,9 @@ public abstract class WithdrawCheck {
                 withdrawBanknotes = Withdrafting.withdraft(sumOfWithdraw);
             }
             return withdrawBanknotes;
-
+        } else {
+            System.out.println("ERROR! The total number of banknotes does not match!");
+            return new int[]{0, 0, 0, 0, 0};
+        }
     }
 }
