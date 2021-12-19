@@ -1,23 +1,60 @@
-package ua.edu.shtoiko.atmsimulator;
+package edu.shtoiko.atmsimulator.atmresource;
 
 import java.util.Arrays;
 
 /** checking the possibility of output */
 public class Withdrafting {
 
+  /** request sum to withdraw */
+  private int withdraftRequestSum;
+  /** an array with the number of banknotes to be issued */
+  private int[] outputingBanknotes;
+
+  /**
+   * to receive the issued banknotes
+   *
+   * @return @return array with quantity of banknotes(fifty, hundred, twoHundred, fiveHundred, thousand)
+   */
+  public int[] getOutputingBanknotes() {
+    return outputingBanknotes;
+  }
+
+  /**
+   * create withdraw request
+   *
+   * @param withdraftRequestSum request sum to withdraw
+   */
+  public Withdrafting(int withdraftRequestSum) {
+    this.withdraftRequestSum = withdraftRequestSum;
+    outputingBanknotes = withdraftRequest(this.withdraftRequestSum);
+  }
+
+  /**
+   * to withdrawting banknotes from ATM
+   *
+   * @param withdraftRequestSum request sum to withdraw
+   * @return array with quantity of banknotes(fifty, hundred, twoHundred, fiveHundred, thousand)
+   */
+  private int[] withdraftRequest(int withdraftRequestSum) {
+    int[] withdrawBanknotes;
+    BanknotesUAH withdraftBanknotesUAH = new BanknotesUAH();
+    withdrawBanknotes = withdraftBanknotesUAH.withdraft(withdraftRequestSum);
+    return withdrawBanknotes;
+  }
+
   /**
    * withdraws currency from the ATM after check
    *
+   * @param availableBanknotes available banknotes in ATM
    * @param requestSumOfWithdraw the amount to be withdrawn
    * @return array with banknotes denomination
-   * @see MultiplicityCheck
    */
-  protected static int[] withdraft(int requestSumOfWithdraw) {
-    int thousand = ATMresource.getThousand();
-    int fiveHundred = ATMresource.getFiveHundred();
-    int twoHundred = ATMresource.getTwoHundred();
-    int hundred = ATMresource.getHundred();
-    int fifty = ATMresource.getFifty();
+  protected static int[] withdraft(int[] availableBanknotes, int requestSumOfWithdraw) {
+    int fifty = availableBanknotes[0];
+    int hundred = availableBanknotes[1];
+    int twoHundred = availableBanknotes[2];
+    int fiveHundred = availableBanknotes[3];
+    int thousand = availableBanknotes[4];
     int sumOfWithdraw = requestSumOfWithdraw;
     int totalQantityOfBanknotesInWithdrafting = 0;
     int requestQantity;
@@ -25,22 +62,22 @@ public class Withdrafting {
     if (thousand != 0) {
       requestQantity = sumOfWithdraw / 1000;
       if (thousand >= requestQantity) {
-        withdrawBanknotes[0] = requestQantity;
+        withdrawBanknotes[4] = requestQantity;
       } else {
-        withdrawBanknotes[0] = thousand;
+        withdrawBanknotes[4] = thousand;
       }
-      sumOfWithdraw -= withdrawBanknotes[0] * 1000;
-      totalQantityOfBanknotesInWithdrafting += withdrawBanknotes[0];
+      sumOfWithdraw -= withdrawBanknotes[4] * 1000;
+      totalQantityOfBanknotesInWithdrafting += withdrawBanknotes[4];
     }
     if (fiveHundred != 0) {
       requestQantity = sumOfWithdraw / 500;
       if (fiveHundred >= requestQantity) {
-        withdrawBanknotes[1] = requestQantity;
+        withdrawBanknotes[3] = requestQantity;
       } else {
-        withdrawBanknotes[1] = fiveHundred;
+        withdrawBanknotes[3] = fiveHundred;
       }
-      sumOfWithdraw -= withdrawBanknotes[1] * 500;
-      totalQantityOfBanknotesInWithdrafting += withdrawBanknotes[1];
+      sumOfWithdraw -= withdrawBanknotes[3] * 500;
+      totalQantityOfBanknotesInWithdrafting += withdrawBanknotes[3];
     }
     if (twoHundred != 0) {
       requestQantity = sumOfWithdraw / 200;
@@ -55,25 +92,24 @@ public class Withdrafting {
     if (hundred != 0) {
       requestQantity = sumOfWithdraw / 100;
       if (hundred >= requestQantity) {
-        withdrawBanknotes[3] = requestQantity;
+        withdrawBanknotes[1] = requestQantity;
       } else {
-        withdrawBanknotes[3] = hundred;
+        withdrawBanknotes[1] = hundred;
       }
-      sumOfWithdraw -= withdrawBanknotes[3] * 100;
-      totalQantityOfBanknotesInWithdrafting += withdrawBanknotes[3];
+      sumOfWithdraw -= withdrawBanknotes[1] * 100;
+      totalQantityOfBanknotesInWithdrafting += withdrawBanknotes[1];
     }
     if (fifty != 0) {
       requestQantity = sumOfWithdraw / 50;
       if (fifty >= requestQantity) {
-        withdrawBanknotes[4] = requestQantity;
-        totalQantityOfBanknotesInWithdrafting += withdrawBanknotes[4];
+        withdrawBanknotes[0] = requestQantity;
+        totalQantityOfBanknotesInWithdrafting += withdrawBanknotes[0];
       } else {
-        withdrawBanknotes[4] = fifty;
+        withdrawBanknotes[0] = fifty;
         System.out.println(
             "There is not enough currency in the ATM, we can issue "
                 + avaliableSum(withdrawBanknotes)
-                + "UAH");
-
+                + "BanknotesUAH");
         Arrays.fill(withdrawBanknotes, 0);
         return withdrawBanknotes;
       }
@@ -82,10 +118,9 @@ public class Withdrafting {
       System.out.println(
           "Your request could not be fulfilled, enter a smaller amount, we can issue "
               + avaliableSum(withdrawBanknotes)
-              + "UAH");
+              + "BanknotesUAH");
     }
-
-    return ATMresource.checkingAmount(withdrawBanknotes, requestSumOfWithdraw);
+    return WithdrawCheck.checkingAmount(withdrawBanknotes, requestSumOfWithdraw);
   }
 
   /**
@@ -94,16 +129,16 @@ public class Withdrafting {
    *
    * @param withdrawBanknotes result from withdrafting method
    */
-  static int avaliableSum(int[] withdrawBanknotes) {
+  protected static int avaliableSum(int[] withdrawBanknotes) {
     int avaliablrSumOfWithdrawRequest = 0;
     int totalQantityOfBanknotesInWithdrafting = 0;
-    for (int i = 0; i < withdrawBanknotes[0]; i++) {
+    for (int i = 0; i < withdrawBanknotes[4]; i++) {
       if (totalQantityOfBanknotesInWithdrafting < 50) {
         avaliablrSumOfWithdrawRequest += 1000;
         totalQantityOfBanknotesInWithdrafting++;
       }
     }
-    for (int i = 0; i < withdrawBanknotes[1]; i++) {
+    for (int i = 0; i < withdrawBanknotes[3]; i++) {
       if (totalQantityOfBanknotesInWithdrafting < 50) {
         avaliablrSumOfWithdrawRequest += 500;
         totalQantityOfBanknotesInWithdrafting++;
@@ -115,13 +150,13 @@ public class Withdrafting {
         totalQantityOfBanknotesInWithdrafting++;
       }
     }
-    for (int i = 0; i < withdrawBanknotes[3]; i++) {
+    for (int i = 0; i < withdrawBanknotes[1]; i++) {
       if (totalQantityOfBanknotesInWithdrafting < 50) {
         avaliablrSumOfWithdrawRequest += 100;
         totalQantityOfBanknotesInWithdrafting++;
       }
     }
-    for (int i = 0; i < withdrawBanknotes[4]; i++) {
+    for (int i = 0; i < withdrawBanknotes[0]; i++) {
       if (totalQantityOfBanknotesInWithdrafting < 50) {
         avaliablrSumOfWithdrawRequest += 50;
         totalQantityOfBanknotesInWithdrafting++;
