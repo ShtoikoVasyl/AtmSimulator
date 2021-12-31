@@ -13,6 +13,7 @@ build_linux:
   stage: build stage
   script:
     - mvn package
+    - rm -rf target/
   only: ['merge_requests', 'master']
   artifacts:
     name: "build artifacts"
