@@ -16,8 +16,7 @@ public class Main {
     System.out.println("Before output :");
     DBsimulator.writeResource();
     Withdrafting withdraw = new Withdrafting(2950); // sum to withdraw
-    int[] outputBanknotes;
-    outputBanknotes = withdraw.getOutputingBanknotes();
+    int[] outputBanknotes = withdraw.getOutputingBanknotes();
     for (int banknotes : outputBanknotes) System.out.println(banknotes);
     System.out.println("After output :");
     DBsimulator.writeResource();
