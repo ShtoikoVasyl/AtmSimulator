@@ -12,8 +12,7 @@ build_linux:
     - linux
   stage: build stage
   script:
-    - mkdir build && cd build && find .. -name "*.java" > sources.txt
-    - javac -Werror -verbose -d .  @sources.txt
+    - mvn package
   only: ['merge_requests', 'master']
   artifacts:
     name: "build artifacts"
