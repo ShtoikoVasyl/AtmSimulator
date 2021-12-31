@@ -17,4 +17,9 @@ This is a project to learn Java, additional tools and frameworks. In this projec
 
 ___Great thanks___ to [@kulch.roman](https://gitlab.com/kulch.roman) for help with learning and for mentoring!
 
+---
+#### Building
+###### Maven
+Enter 'mvn package' to the terminal for building
+
 
