@@ -12,14 +12,18 @@ This is a project to learn Java, additional tools and frameworks. In this projec
 	* Hibernate/JPA;
 	* Java EE;
 	* Spring framework (Core, Boot, MVC, Data JPA);
-
 ---
 
 ___Great thanks___ to [@kulch.roman](https://gitlab.com/kulch.roman) for help with learning and for mentoring!
-
 ---
+
+###### In project we use [google-java-format](https://github.com/google/google-java-format) for code formatting.
+---
+
 #### Building
 ###### Maven
-Enter 'mvn package' to the terminal for building
+Instal [MAVEN](https://maven.apache.org) and run it with:
+
+	 mvn package
 
 
