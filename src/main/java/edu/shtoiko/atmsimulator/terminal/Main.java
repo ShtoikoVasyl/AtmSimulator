@@ -1,6 +1,6 @@
 package edu.shtoiko.atmsimulator.terminal;
 
-import sun.awt.HToolkit;
+
 
 import javax.swing.*;
 import java.awt.*;
