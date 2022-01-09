@@ -22,7 +22,7 @@
                  <outputDirectory>build</outputDirectory>
                   <archive>
                     <manifest>
-                        <mainClass>edu.shtoiko.atmsimulator.Main</mainClass>
+                        <mainClass>edu.shtoiko.atmsimulator.terminal.Main</mainClass>
                     </manifest>
                   </archive>
                </configuration>
