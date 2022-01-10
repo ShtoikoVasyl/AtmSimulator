@@ -26,8 +26,9 @@ public class DBsimulator {
   protected static int getFifty() {
     return fifty;
   }
+
   /** to load fifty denomination banknotes */
-  protected static void loadFifty(int fifty) {
+  public static void loadFifty(int fifty) {
     DBsimulator.fifty += fifty;
   }
 
@@ -42,7 +43,7 @@ public class DBsimulator {
   }
 
   /** to load one hundred denomination banknotes */
-  protected static void loadHundred(int hundred) {
+  public static void loadHundred(int hundred) {
     DBsimulator.hundred += hundred;
   }
 
@@ -57,7 +58,7 @@ public class DBsimulator {
   }
 
   /** to load two hundred denomination banknotes */
-  protected static void loadTwoHundred(int twoHundred) {
+  public static void loadTwoHundred(int twoHundred) {
     DBsimulator.twoHundred += twoHundred;
   }
 
@@ -72,7 +73,7 @@ public class DBsimulator {
   }
 
   /** to load five hundred denomination banknotes */
-  protected static void loadFiveHundred(int fiveHundred) {
+  public static void loadFiveHundred(int fiveHundred) {
     DBsimulator.fiveHundred += fiveHundred;
   }
 
@@ -87,7 +88,7 @@ public class DBsimulator {
   }
 
   /** to load thousands denomination banknotes */
-  protected static void loadThousand(int thousand) {
+  public static void loadThousand(int thousand) {
     DBsimulator.thousand += thousand;
   }
 
@@ -101,11 +102,30 @@ public class DBsimulator {
    *
    * @deprecated must be replaced
    */
-  public static void writeResource() {
-    System.out.println("Fifty        " + fifty);
-    System.out.println("Hundred      " + hundred);
-    System.out.println("Two hundred  " + twoHundred);
-    System.out.println("Five hundred " + fiveHundred);
-    System.out.println("Thousand     " + thousand);
+  public static int[] getResource() {
+    int[] resource = new int[5];
+    resource[0] = fifty;
+    resource[1] = hundred;
+    resource[2] = twoHundred;
+    resource[3] = fiveHundred;
+    resource[4] = thousand;
+    return resource;
+  }
+
+
+  public static  int getTotalBanknotes (){
+    int total = fifty + hundred + twoHundred + fiveHundred + thousand;
+    return total;
+  }
+
+
+  public static String messageResource(){
+    int[] resource = DBsimulator.getResource();
+    String message = ("Available banknotes:" + "\n" + "Fifty - " + resource[0] + "\n" + "Hundred - " + resource[1]
+            + "\n" + "Two hundred - " + resource[2] + "\n" + "Five hundred - " + resource[3]
+            + "\n" + "Thousand - " + resource[4]);
+
+
+    return message;
   }
 }
