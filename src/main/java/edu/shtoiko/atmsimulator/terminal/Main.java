@@ -1,7 +1,6 @@
 package edu.shtoiko.atmsimulator.terminal;
 
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,18 +20,18 @@ public class Main {
 
 
         ButtonGroup choice = new ButtonGroup();
-        JRadioButton user = new JRadioButton("user", true);
+        JRadioButton user = new JRadioButton("User", true);
         choice.add(user);
-        JRadioButton service = new JRadioButton("service", false);
+        JRadioButton service = new JRadioButton("Service person", false);
         choice.add(service);
 
      String message = "You want authorithed as..";
      JLabel text = new JLabel();
      text.setText(message);
 
-        JButton autorithed = new JButton();
-        autorithed.setText("Autorithed");
-        autorithed.addActionListener(new ActionListener() {
+        JButton autorized = new JButton();
+        autorized.setText("Autorization");
+        autorized.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
           if (user.isSelected()){
@@ -49,12 +48,15 @@ public class Main {
 
            text.setText(message + "Service");
 
+              frame.setVisible(false);
+              ServicePersonTerminal service = new ServicePersonTerminal();
+
 
 
           }
          }
         });
-//        autorithed.setSize(150,150);
+//        autorized.setSize(150,150);
 
 
 
@@ -75,7 +77,7 @@ public class Main {
         panel.add(text, BorderLayout.NORTH);
         panel.add(service, BorderLayout.EAST);
         panel.add(user, BorderLayout.WEST);
-        panel.add(autorithed, BorderLayout.SOUTH);
+        panel.add(autorized, BorderLayout.SOUTH);
 
         frame.getContentPane().add(panel);
 
