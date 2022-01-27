@@ -128,4 +128,26 @@ public class DBsimulator {
 
     return message;
   }
+
+
+  public static String getAvailableBanknotes(){
+    String message = new String();
+    if(thousand != 0){
+      message += " 1000";
+    }
+    if(fiveHundred != 0){
+      message += " 500";
+    }
+    if(twoHundred !=0){
+      message += " 200";
+    }
+    if(hundred !=0){
+      message += " 100";
+    }
+    if(fifty != 0){
+      message += " 50";
+    }
+    return message;
+  }
 }
+
