@@ -1,6 +1,6 @@
 package edu.shtoiko.atmsimulator.terminal;
 
-import edu.shtoiko.atmsimulator.atmresource.DBsimulator;
+import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
 import edu.shtoiko.atmsimulator.atmresource.Withdrafting;
 import javax.swing.*;
 import java.awt.*;

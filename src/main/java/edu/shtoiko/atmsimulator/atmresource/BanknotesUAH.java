@@ -1,5 +1,7 @@
 package edu.shtoiko.atmsimulator.atmresource;
 
+import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
+
 /** currency Ukrainian hryvnia(BanknotesUAH) */
 public class BanknotesUAH {
 

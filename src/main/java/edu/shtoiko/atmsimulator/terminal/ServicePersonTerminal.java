@@ -1,7 +1,7 @@
 package edu.shtoiko.atmsimulator.terminal;
 
-import edu.shtoiko.atmsimulator.atmresource.ATMloading;
-import edu.shtoiko.atmsimulator.atmresource.DBsimulator;
+import edu.shtoiko.atmsimulator.datawarehouse.ATMloading;
+import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
 
 
 import javax.swing.*;

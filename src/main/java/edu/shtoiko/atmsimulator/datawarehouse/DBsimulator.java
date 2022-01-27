@@ -1,4 +1,4 @@
-package edu.shtoiko.atmsimulator.atmresource;
+package edu.shtoiko.atmsimulator.datawarehouse;
 
 /**
  * temporary database replacement
@@ -33,7 +33,7 @@ public class DBsimulator {
   }
 
   /** to withdraw fifty denomination banknotes */
-  protected static void takeOutFifty(int fifty) {
+  public static void takeOutFifty(int fifty) {
     DBsimulator.fifty -= fifty;
   }
 
@@ -48,7 +48,7 @@ public class DBsimulator {
   }
 
   /** to withdraw one hundred denomination banknotes */
-  protected static void takeOutHundred(int hundred) {
+  public static void takeOutHundred(int hundred) {
     DBsimulator.hundred -= hundred;
   }
 
@@ -63,7 +63,7 @@ public class DBsimulator {
   }
 
   /** to withdraw two hundred denomination banknotes */
-  protected static void takeOutTwoHundred(int twoHundred) {
+  public static void takeOutTwoHundred(int twoHundred) {
     DBsimulator.twoHundred -= twoHundred;
   }
 
@@ -78,7 +78,7 @@ public class DBsimulator {
   }
 
   /** to withdraw five hundred denomination banknotes */
-  protected static void takeOutFiveHundred(int fiveHundred) {
+  public static void takeOutFiveHundred(int fiveHundred) {
     DBsimulator.fiveHundred -= fiveHundred;
   }
 
@@ -93,7 +93,7 @@ public class DBsimulator {
   }
 
   /** to withdraw thousands denomination banknotes */
-  protected static void takeOutThousand(int thousand) {
+  public static void takeOutThousand(int thousand) {
     DBsimulator.thousand -= thousand;
   }
 
