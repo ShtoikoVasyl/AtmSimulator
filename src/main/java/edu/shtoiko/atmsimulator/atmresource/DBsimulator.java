@@ -23,7 +23,7 @@ public class DBsimulator {
   private static int thousand = 0;
 
   /** to get fifty denomination banknotes */
-  protected static int getFifty() {
+  public static int getFifty() {
     return fifty;
   }
 
@@ -38,7 +38,7 @@ public class DBsimulator {
   }
 
   /** to get one hundred denomination banknotes */
-  protected static int getHundred() {
+  public static int getHundred() {
     return hundred;
   }
 
@@ -53,7 +53,7 @@ public class DBsimulator {
   }
 
   /** to get two hundred denomination banknotes */
-  protected static int getTwoHundred() {
+  public static int getTwoHundred() {
     return twoHundred;
   }
 
@@ -68,7 +68,7 @@ public class DBsimulator {
   }
 
   /** to get five hundred denomination banknotes */
-  protected static int getFiveHundred() {
+  public static int getFiveHundred() {
     return fiveHundred;
   }
 
@@ -83,7 +83,7 @@ public class DBsimulator {
   }
 
   /** to get thousands denomination banknotes */
-  protected static int getThousand() {
+  public static int getThousand() {
     return thousand;
   }
 
