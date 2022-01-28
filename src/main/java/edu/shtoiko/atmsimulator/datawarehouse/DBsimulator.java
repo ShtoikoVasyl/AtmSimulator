@@ -117,29 +117,6 @@ public class DBsimulator {
     return total;
   }
 
-  public static String messageResource() {
-    int[] resource = DBsimulator.getResource();
-    String message =
-        ("Available banknotes:"
-            + "\n"
-            + "Fifty - "
-            + resource[0]
-            + "\n"
-            + "Hundred - "
-            + resource[1]
-            + "\n"
-            + "Two hundred - "
-            + resource[2]
-            + "\n"
-            + "Five hundred - "
-            + resource[3]
-            + "\n"
-            + "Thousand - "
-            + resource[4]);
-
-    return message;
-  }
-
   public static String getAvailableBanknotes() {
     String message = "";
     if (thousand != 0) {
