@@ -1,4 +1,4 @@
-package edu.shtoiko.atmsimulator.atmresource;
+package edu.shtoiko.atmsimulator.controllers;
 
 import java.util.Arrays;
 

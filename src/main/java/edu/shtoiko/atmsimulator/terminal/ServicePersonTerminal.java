@@ -279,7 +279,7 @@ public class ServicePersonTerminal {
         availablePanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(138,200,168), 0, true), "Available Banknotes", TitledBorder.LEFT, TitledBorder.TOP));
 
         availablePanel.setBounds(20,50,195,275);
-        availablePanel.setBackground(new Color(245,255,239));
+        availablePanel.setBackground(new Color(250,255,244));
         availablePanel.setLayout(null);
         availablePanel.add(avaliableFiftyRight);
         availablePanel.add(avaliableFiftyLeft);

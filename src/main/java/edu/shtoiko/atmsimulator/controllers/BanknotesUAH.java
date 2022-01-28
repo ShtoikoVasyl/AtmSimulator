@@ -1,4 +1,4 @@
-package edu.shtoiko.atmsimulator.atmresource;
+package edu.shtoiko.atmsimulator.controllers;
 
 import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
 

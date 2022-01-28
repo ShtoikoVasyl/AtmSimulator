@@ -38,7 +38,7 @@ public class Main {
 
            text.setText(message + "User");
 
-              frame.setVisible(false);
+//              frame.setVisible(false);
               UserTerminal user = new UserTerminal();
 
 
@@ -48,7 +48,7 @@ public class Main {
 
            text.setText(message + "Service");
 
-              frame.setVisible(false);
+//              frame.setVisible(false);
               ServicePersonTerminal service = new ServicePersonTerminal();
 
 
