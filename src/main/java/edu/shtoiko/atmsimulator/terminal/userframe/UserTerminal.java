@@ -1,4 +1,4 @@
-package edu.shtoiko.atmsimulator.terminal;
+package edu.shtoiko.atmsimulator.terminal.userframe;
 
 import edu.shtoiko.atmsimulator.controllers.Withdrafting;
 import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;

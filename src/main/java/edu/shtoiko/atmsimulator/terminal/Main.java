@@ -1,6 +1,7 @@
 package edu.shtoiko.atmsimulator.terminal;
 
 import edu.shtoiko.atmsimulator.terminal.serviceframe.ServicePersonTerminal;
+import edu.shtoiko.atmsimulator.terminal.userframe.UserTerminal;
 
 import javax.swing.*;
 import java.awt.*;
