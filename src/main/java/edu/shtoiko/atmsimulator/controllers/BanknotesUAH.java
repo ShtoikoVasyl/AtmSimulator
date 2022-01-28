@@ -20,16 +20,8 @@ public class BanknotesUAH {
   /** number of banknotes denomination of one thousand */
   private int thousand;
 
-  private int totalBanknotes = fifty + hundred + twoHundred + fiveHundred + thousand;
-
-  /**
-   * to get total quantity of banknotes
-   *
-   * @return total quantity
-   */
-  public int getTotalBanknotes() {
-    return totalBanknotes;
-  }
+  /** get totalBanknotes */
+  private final int totalBanknotes = fifty + hundred + twoHundred + fiveHundred + thousand;
 
   /** constructor of BanknotesUAH */
   protected BanknotesUAH() {
@@ -41,16 +33,25 @@ public class BanknotesUAH {
   }
 
   /**
+   * to get total quantity of banknotes
+   *
+   * @return total quantity
+   */
+  public int getTotalBanknotes() {
+    return totalBanknotes;
+  }
+
+  /**
    * withdraft from avaliable quantity of banknotes
    *
-   * @param withdraftSum sum to withdrafting from request
+   * @param withdrawSum sum to withdrafting from request
    * @return array with quantity of banknotes(fifty, hundred, twoHundred, fiveHundred, thousand)
    */
-  protected int[] withdraft(int withdraftSum) {
+  protected int[] withdraft(int withdrawSum) {
     int[] withdrawBanknotes = new int[5];
     int[] availableBanknotes = new int[] {fifty, hundred, twoHundred, fiveHundred, thousand};
-    if (WithdrawCheck.withdrawRequestCheck(withdraftSum, multiplicity())) {
-      withdrawBanknotes = Withdrafting.withdraft(availableBanknotes, withdraftSum);
+    if (WithdrawCheck.withdrawRequestCheck(withdrawSum, multiplicity())) {
+      withdrawBanknotes = Withdrafting.withdraft(availableBanknotes, withdrawSum);
       outputBanknotes(withdrawBanknotes);
       return withdrawBanknotes;
     }

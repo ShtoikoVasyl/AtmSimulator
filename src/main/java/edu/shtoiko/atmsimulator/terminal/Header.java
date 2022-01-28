@@ -5,7 +5,6 @@ import java.awt.*;
 
 public class Header extends JPanel{
 
-
     protected Header() {
         this.setBounds(0, 0, 615, 125);
         this.setBackground(Color.WHITE);
@@ -14,5 +13,4 @@ public class Header extends JPanel{
         logo.setBounds(35, 15, 300, 100);
         this.add(logo);
     }
-
 }

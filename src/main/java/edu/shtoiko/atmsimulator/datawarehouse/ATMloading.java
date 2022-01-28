@@ -1,7 +1,5 @@
 package edu.shtoiko.atmsimulator.datawarehouse;
 
-import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
-
 /** to load banknotes into an ATM */
 public class ATMloading {
 
@@ -35,7 +33,7 @@ public class ATMloading {
       return true;
     }
     System.out.println(
-        "Loading not posible, maximum quantity to load "
+        "Loading not possible, maximum quantity to load "
             + (maxBanknotesInATM - totalQuantityOfBanknotes)
             + " banknotes!");
     return false;

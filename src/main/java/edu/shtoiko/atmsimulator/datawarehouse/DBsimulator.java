@@ -112,42 +112,51 @@ public class DBsimulator {
     return resource;
   }
 
-
-  public static  int getTotalBanknotes (){
+  public static int getTotalBanknotes() {
     int total = fifty + hundred + twoHundred + fiveHundred + thousand;
     return total;
   }
 
-
-  public static String messageResource(){
+  public static String messageResource() {
     int[] resource = DBsimulator.getResource();
-    String message = ("Available banknotes:" + "\n" + "Fifty - " + resource[0] + "\n" + "Hundred - " + resource[1]
-            + "\n" + "Two hundred - " + resource[2] + "\n" + "Five hundred - " + resource[3]
-            + "\n" + "Thousand - " + resource[4]);
-
+    String message =
+        ("Available banknotes:"
+            + "\n"
+            + "Fifty - "
+            + resource[0]
+            + "\n"
+            + "Hundred - "
+            + resource[1]
+            + "\n"
+            + "Two hundred - "
+            + resource[2]
+            + "\n"
+            + "Five hundred - "
+            + resource[3]
+            + "\n"
+            + "Thousand - "
+            + resource[4]);
 
     return message;
   }
 
-
-  public static String getAvailableBanknotes(){
-    String message = new String();
-    if(thousand != 0){
+  public static String getAvailableBanknotes() {
+    String message = "";
+    if (thousand != 0) {
       message += " 1000";
     }
-    if(fiveHundred != 0){
+    if (fiveHundred != 0) {
       message += " 500";
     }
-    if(twoHundred !=0){
+    if (twoHundred != 0) {
       message += " 200";
     }
-    if(hundred !=0){
+    if (hundred != 0) {
       message += " 100";
     }
-    if(fifty != 0){
+    if (fifty != 0) {
       message += " 50";
     }
     return message;
   }
 }
-
