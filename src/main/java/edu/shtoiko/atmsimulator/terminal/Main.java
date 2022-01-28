@@ -13,7 +13,7 @@ public class Main {
     UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 
     JFrame frame = new JFrame("ATM");
-    frame.setVisible(true);
+
     frame.setBounds(300, 100, 300, 300);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setLayout(new BorderLayout());
@@ -61,5 +61,6 @@ public class Main {
     panel.add(autorized, BorderLayout.SOUTH);
 
     frame.getContentPane().add(panel);
+    frame.setVisible(true);
   }
 }

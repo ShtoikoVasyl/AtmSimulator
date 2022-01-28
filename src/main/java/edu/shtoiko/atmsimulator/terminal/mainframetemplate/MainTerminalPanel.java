@@ -1,7 +1,6 @@
-package edu.shtoiko.atmsimulator.terminal;
+package edu.shtoiko.atmsimulator.terminal.mainframetemplate;
 
 import javax.swing.*;
-import java.awt.*;
 
 
 public class MainTerminalPanel extends JPanel {

@@ -1,9 +1,9 @@
-package edu.shtoiko.atmsimulator.terminal;
+package edu.shtoiko.atmsimulator.terminal.mainframetemplate;
 
 import javax.swing.*;
 
 public class TerminalFrame extends JFrame {
-  protected MainTerminalPanel mainPanel;
+  public MainTerminalPanel mainPanel;
 
   public TerminalFrame() {
     this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

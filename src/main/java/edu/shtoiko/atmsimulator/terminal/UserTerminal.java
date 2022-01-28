@@ -2,6 +2,7 @@ package edu.shtoiko.atmsimulator.terminal;
 
 import edu.shtoiko.atmsimulator.controllers.Withdrafting;
 import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
+import edu.shtoiko.atmsimulator.terminal.mainframetemplate.TerminalFrame;
 
 import javax.swing.*;
 import java.awt.*;
