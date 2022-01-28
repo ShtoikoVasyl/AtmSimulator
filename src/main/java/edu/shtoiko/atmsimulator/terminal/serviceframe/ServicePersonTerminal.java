@@ -1,4 +1,4 @@
-package edu.shtoiko.atmsimulator.terminal;
+package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
 import edu.shtoiko.atmsimulator.datawarehouse.ATMloading;
 import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
