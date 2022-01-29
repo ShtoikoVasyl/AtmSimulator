@@ -3,7 +3,6 @@ package edu.shtoiko.atmsimulator.terminal.serviceframe;
 import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
 
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 public class AvaliablePanel extends JPanel {
@@ -40,7 +39,7 @@ public class AvaliablePanel extends JPanel {
     }
 
 
-    public void setBackground2(Color color){
+    public void setBackgroundColor(Color color){
         this.setBackground(color);
         fifty.setBackground(color);
         hundred.setBackground(color);
