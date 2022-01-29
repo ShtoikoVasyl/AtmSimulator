@@ -1,7 +1,6 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
 import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
-
 import javax.swing.*;
 import java.awt.*;
 

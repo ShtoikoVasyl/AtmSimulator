@@ -3,7 +3,6 @@ package edu.shtoiko.atmsimulator.terminal.serviceframe;
 import edu.shtoiko.atmsimulator.datawarehouse.ATMloading;
 import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
 import edu.shtoiko.atmsimulator.terminal.mainframetemplate.TerminalFrame;
-
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -25,8 +24,23 @@ public class ServicePersonTerminal {
     lastMessage.setFont(new Font("", Font.BOLD, 14));
 
 
+    System.out.println("text");
+
+
+    LoadPanel loadPanel = new LoadPanel();
+    loadPanel.setBorder(
+            BorderFactory.createTitledBorder(
+                    BorderFactory.createLineBorder(new Color(240, 240, 240), 0, true),
+                    "Loading Banknotes",
+                    TitledBorder.RIGHT,
+                    TitledBorder.TOP));
+    loadPanel.setBackground(new Color(255, 255, 255));
+    loadPanel.setBounds(225, 50, 370, 275);
+
+
+
     AvaliablePanel avaliablePanel = new AvaliablePanel();
-    avaliablePanel.setBeckground(new Color(250, 255, 244));
+    avaliablePanel.setBackground2(new Color(250, 255, 244));
     avaliablePanel.setBorder(
             BorderFactory.createTitledBorder(
                     BorderFactory.createLineBorder(new Color(138, 200, 168), 0, true),
@@ -34,6 +48,8 @@ public class ServicePersonTerminal {
                     TitledBorder.LEFT,
                     TitledBorder.TOP));
     avaliablePanel.setBounds(20, 50, 195, 275);
+
+
 
     JLabel loadToMaxLeft = new JLabel();
     loadToMaxLeft.setText(Integer.toString(maxTotalBanknotes - DBsimulator.getTotalBanknotes()));
@@ -45,17 +61,20 @@ public class ServicePersonTerminal {
     loadToMaxRight.setFont(new Font("", Font.BOLD, 15));
     loadToMaxRight.setBounds(145, 230, 210, 30);
 
-    JTextField inputFifty = new JTextField(5);
-    inputFifty.setBounds(15, 20, 155, 30);
-    inputFifty.setBackground(new Color(250, 255, 244));
-    JButton loadingFifty = new JButton();
-    loadingFifty.setBounds(180, 20, 175, 30);
-    loadingFifty.setBackground(new Color(138, 200, 168));
-    loadingFifty.setText("Load banknotes 50");
-    loadingFifty.addActionListener( new ActionListener() {
+//    JTextField inputFifty = new JTextField(5);
+//    inputFifty.setBounds(15, 20, 155, 30);
+//    inputFifty.setBackground(new Color(250, 255, 244));
+//    JButton loadingFifty = new JButton();
+//    loadingFifty.setBounds(180, 20, 175, 30);
+//    loadingFifty.setBackground(new Color(138, 200, 168));
+//    loadingFifty.setText("Load banknotes 50");
+
+//    InputPanel inputFifty = new InputPanel(20, "Load banknotes 50");
+
+    loadPanel.fifty.inputButton.addActionListener( new ActionListener() {
           @Override
           public void actionPerformed(ActionEvent e) {
-            String input = inputFifty.getText();
+            String input = loadPanel.fifty.inputField.getText();
             int sum = Integer.parseInt(input);
             int[] load = new int[5];
             load[0] = sum;
@@ -67,8 +86,7 @@ public class ServicePersonTerminal {
               lastMessage.setText("ERROR");
               lastMessage.setForeground(new Color(205, 85, 74));
             }
-            inputFifty.setText("");
-//            avaliableFiftyRight.setText(Integer.toString(DBsimulator.getFifty()));
+            loadPanel.fifty.inputField.setText("");
             avaliablePanel.fifty.setQuantity(Integer.toString(DBsimulator.getFifty()));
             avaliablePanel.totalBanknotes.setQuantity(Integer.toString(DBsimulator.getTotalBanknotes()));
             loadToMaxLeft.setText(
@@ -111,11 +129,9 @@ public class ServicePersonTerminal {
     JTextField inputTwoHundred = new JTextField(5);
     inputTwoHundred.setBounds(15, 100, 155, 30);
     inputTwoHundred.setBackground(new Color(250, 255, 244));
-
     JButton loadingTwoHundred = new JButton();
     loadingTwoHundred.setBounds(180, 100, 175, 30);
     loadingTwoHundred.setBackground(new Color(138, 200, 168));
-
     loadingTwoHundred.setText("Load banknotes 200");
     loadingTwoHundred.addActionListener(
         new ActionListener() {
@@ -206,29 +222,29 @@ public class ServicePersonTerminal {
                 Integer.toString(maxTotalBanknotes - DBsimulator.getTotalBanknotes()));
           }
         });
-    
-    JPanel loadPanel = new JPanel();
-    loadPanel.setBorder(
-        BorderFactory.createTitledBorder(
-            BorderFactory.createLineBorder(new Color(240, 240, 240), 0, true),
-            "Loading Banknotes",
-            TitledBorder.RIGHT,
-            TitledBorder.TOP));
-    loadPanel.setBackground(new Color(255, 255, 255));
-    loadPanel.setBounds(225, 50, 370, 275);
-    loadPanel.setLayout(null);
-    loadPanel.add(inputFifty);
-    loadPanel.add(loadingFifty);
-    loadPanel.add(inputHundred);
-    loadPanel.add(loadingHundred);
-    loadPanel.add(inputTwoHundred);
-    loadPanel.add(loadingTwoHundred);
-    loadPanel.add(inputFiveHundred);
-    loadPanel.add(loadingFiveHundred);
-    loadPanel.add(inputThousand);
-    loadPanel.add(loadingThousand);
-    loadPanel.add(loadToMaxLeft);
-    loadPanel.add(loadToMaxRight);
+
+//    LoadPanel loadPanel = new LoadPanel();
+//    loadPanel.setBorder(
+//        BorderFactory.createTitledBorder(
+//            BorderFactory.createLineBorder(new Color(240, 240, 240), 0, true),
+//            "Loading Banknotes",
+//            TitledBorder.RIGHT,
+//            TitledBorder.TOP));
+//    loadPanel.setBackground(new Color(255, 255, 255));
+//    loadPanel.setBounds(225, 50, 370, 275);
+//    loadPanel.add(inputFifty);
+//    loadPanel.add(inputFifty);
+//    loadPanel.add(loadingFifty);
+//    loadPanel.add(inputHundred);
+//    loadPanel.add(loadingHundred);
+//    loadPanel.add(inputTwoHundred);
+//    loadPanel.add(loadingTwoHundred);
+//    loadPanel.add(inputFiveHundred);
+//    loadPanel.add(loadingFiveHundred);
+//    loadPanel.add(inputThousand);
+//    loadPanel.add(loadingThousand);
+//    loadPanel.add(loadToMaxLeft);
+//    loadPanel.add(loadToMaxRight);
 
     serviceFrame.mainPanel.setBackground(new Color(240, 240, 240));
     serviceFrame.mainPanel.setLayout(null);
