@@ -24,62 +24,16 @@ public class ServicePersonTerminal {
     lastMessage.setBounds(30, 15, 555, 35);
     lastMessage.setFont(new Font("", Font.BOLD, 14));
 
-    JLabel avaliableFiftyRight = new JLabel();
-    avaliableFiftyRight.setText(Integer.toString(DBsimulator.getFifty()));
-    avaliableFiftyRight.setHorizontalAlignment(JLabel.RIGHT);
-    avaliableFiftyRight.setBounds(115, 20, 65, 30);
-    JLabel avaliableFiftyLeft = new JLabel();
-    avaliableFiftyLeft.setText("Fifty:");
-    avaliableFiftyLeft.setBounds(15, 20, 100, 30);
-    avaliableFiftyLeft.setForeground(new Color(127, 127, 127));
 
-    JLabel availableHundredRight = new JLabel();
-    availableHundredRight.setText(Integer.toString(DBsimulator.getHundred()));
-    availableHundredRight.setHorizontalAlignment(JLabel.RIGHT);
-    availableHundredRight.setBounds(115, 60, 65, 30);
-    JLabel availableHundredLeft = new JLabel();
-    availableHundredLeft.setText("Hundred:");
-    availableHundredLeft.setBounds(15, 60, 100, 30);
-    availableHundredLeft.setForeground(new Color(127, 127, 127));
-
-    JLabel availableTwoHundredRight = new JLabel();
-    availableTwoHundredRight.setText(Integer.toString(DBsimulator.getTwoHundred()));
-    availableTwoHundredRight.setHorizontalAlignment(JLabel.RIGHT);
-    availableTwoHundredRight.setBounds(115, 100, 65, 30);
-    JLabel availableTwoHundredLeft = new JLabel();
-    availableTwoHundredLeft.setText("Two hundred:");
-    availableTwoHundredLeft.setBounds(15, 100, 100, 30);
-    availableTwoHundredLeft.setForeground(new Color(127, 127, 127));
-
-    JLabel availableFiveHundredRight = new JLabel();
-    availableFiveHundredRight.setText(Integer.toString(DBsimulator.getFiveHundred()));
-    availableFiveHundredRight.setHorizontalAlignment(JLabel.RIGHT);
-    availableFiveHundredRight.setBounds(115, 140, 65, 30);
-    JLabel availableFiveHundredLeft = new JLabel();
-    availableFiveHundredLeft.setText("Five hundred:");
-    availableFiveHundredLeft.setBounds(15, 140, 100, 30);
-    availableFiveHundredLeft.setForeground(new Color(127, 127, 127));
-
-    JLabel availableThousandRight = new JLabel();
-    availableThousandRight.setText(Integer.toString(DBsimulator.getThousand()));
-    availableThousandRight.setHorizontalAlignment(JLabel.RIGHT);
-    availableThousandRight.setBounds(115, 180, 65, 30);
-    JLabel availableThousandLeft = new JLabel();
-    availableThousandLeft.setText("Thousand:");
-    availableThousandLeft.setBounds(15, 180, 100, 30);
-    availableThousandLeft.setForeground(new Color(127, 127, 127));
-
-    JLabel totalBanknotesRight = new JLabel();
-    totalBanknotesRight.setText(Integer.toString(DBsimulator.getTotalBanknotes()));
-    totalBanknotesRight.setFont(new Font("", Font.BOLD, 15));
-    totalBanknotesRight.setForeground(new Color(175, 65, 55));
-    totalBanknotesRight.setHorizontalAlignment(JLabel.RIGHT);
-    totalBanknotesRight.setBounds(115, 230, 65, 30);
-    JLabel totalBanknotesLeft = new JLabel();
-    totalBanknotesLeft.setText("Total quantity:");
-    totalBanknotesLeft.setFont(new Font("", Font.BOLD, 14));
-    totalBanknotesLeft.setForeground(new Color(205, 85, 74));
-    totalBanknotesLeft.setBounds(15, 230, 110, 30);
+    AvaliablePanel avaliablePanel = new AvaliablePanel();
+    avaliablePanel.setBeckground(new Color(250, 255, 244));
+    avaliablePanel.setBorder(
+            BorderFactory.createTitledBorder(
+                    BorderFactory.createLineBorder(new Color(138, 200, 168), 0, true),
+                    "Available Banknotes",
+                    TitledBorder.LEFT,
+                    TitledBorder.TOP));
+    avaliablePanel.setBounds(20, 50, 195, 275);
 
     JLabel loadToMaxLeft = new JLabel();
     loadToMaxLeft.setText(Integer.toString(maxTotalBanknotes - DBsimulator.getTotalBanknotes()));
@@ -114,8 +68,9 @@ public class ServicePersonTerminal {
               lastMessage.setForeground(new Color(205, 85, 74));
             }
             inputFifty.setText("");
-            avaliableFiftyRight.setText(Integer.toString(DBsimulator.getFifty()));
-            totalBanknotesRight.setText(Integer.toString(DBsimulator.getTotalBanknotes()));
+//            avaliableFiftyRight.setText(Integer.toString(DBsimulator.getFifty()));
+            avaliablePanel.fifty.setQuantity(Integer.toString(DBsimulator.getFifty()));
+            avaliablePanel.totalBanknotes.setQuantity(Integer.toString(DBsimulator.getTotalBanknotes()));
             loadToMaxLeft.setText(
                 Integer.toString(maxTotalBanknotes - DBsimulator.getTotalBanknotes()));
           }
@@ -146,8 +101,8 @@ public class ServicePersonTerminal {
               lastMessage.setForeground(new Color(205, 85, 74));
             }
             inputHundred.setText("");
-            availableHundredRight.setText(Integer.toString(DBsimulator.getHundred()));
-            totalBanknotesRight.setText(Integer.toString(DBsimulator.getTotalBanknotes()));
+            avaliablePanel.hundred.setQuantity(Integer.toString(DBsimulator.getHundred()));
+            avaliablePanel.totalBanknotes.setQuantity(Integer.toString(DBsimulator.getTotalBanknotes()));
             loadToMaxLeft.setText(
                 Integer.toString(maxTotalBanknotes - DBsimulator.getTotalBanknotes()));
           }
@@ -179,8 +134,8 @@ public class ServicePersonTerminal {
               lastMessage.setForeground(new Color(205, 85, 74));
             }
             inputTwoHundred.setText("");
-            availableTwoHundredRight.setText(Integer.toString(DBsimulator.getTwoHundred()));
-            totalBanknotesRight.setText(Integer.toString(DBsimulator.getTotalBanknotes()));
+            avaliablePanel.twoHundred.setQuantity(Integer.toString(DBsimulator.getTwoHundred()));
+            avaliablePanel.totalBanknotes.setQuantity(Integer.toString(DBsimulator.getTotalBanknotes()));
             loadToMaxLeft.setText(
                 Integer.toString(maxTotalBanknotes - DBsimulator.getTotalBanknotes()));
           }
@@ -212,8 +167,8 @@ public class ServicePersonTerminal {
               lastMessage.setForeground(new Color(205, 85, 74));
             }
             inputFiveHundred.setText("");
-            availableFiveHundredRight.setText(Integer.toString(DBsimulator.getFiveHundred()));
-            totalBanknotesRight.setText(Integer.toString(DBsimulator.getTotalBanknotes()));
+            avaliablePanel.fiveHundred.setQuantity(Integer.toString(DBsimulator.getFiveHundred()));
+            avaliablePanel.totalBanknotes.setQuantity(Integer.toString(DBsimulator.getTotalBanknotes()));
             loadToMaxLeft.setText(
                 Integer.toString(maxTotalBanknotes - DBsimulator.getTotalBanknotes()));
           }
@@ -245,37 +200,13 @@ public class ServicePersonTerminal {
               lastMessage.setForeground(new Color(205, 85, 74));
             }
             inputThousand.setText("");
-            availableThousandRight.setText(Integer.toString(DBsimulator.getThousand()));
-            totalBanknotesRight.setText(Integer.toString(DBsimulator.getTotalBanknotes()));
+            avaliablePanel.thousand.setQuantity(Integer.toString(DBsimulator.getThousand()));
+            avaliablePanel.totalBanknotes.setQuantity(Integer.toString(DBsimulator.getTotalBanknotes()));
             loadToMaxLeft.setText(
                 Integer.toString(maxTotalBanknotes - DBsimulator.getTotalBanknotes()));
           }
         });
-
-    JPanel availablePanel = new JPanel();
-    availablePanel.setBorder(
-        BorderFactory.createTitledBorder(
-            BorderFactory.createLineBorder(new Color(138, 200, 168), 0, true),
-            "Available Banknotes",
-            TitledBorder.LEFT,
-            TitledBorder.TOP));
-
-    availablePanel.setBounds(20, 50, 195, 275);
-    availablePanel.setBackground(new Color(250, 255, 244));
-    availablePanel.setLayout(null);
-    availablePanel.add(avaliableFiftyRight);
-    availablePanel.add(avaliableFiftyLeft);
-    availablePanel.add(availableHundredRight);
-    availablePanel.add(availableHundredLeft);
-    availablePanel.add(availableTwoHundredRight);
-    availablePanel.add(availableTwoHundredLeft);
-    availablePanel.add(availableFiveHundredRight);
-    availablePanel.add(availableFiveHundredLeft);
-    availablePanel.add(availableThousandRight);
-    availablePanel.add(availableThousandLeft);
-    availablePanel.add(totalBanknotesRight);
-    availablePanel.add(totalBanknotesLeft);
-
+    
     JPanel loadPanel = new JPanel();
     loadPanel.setBorder(
         BorderFactory.createTitledBorder(
@@ -303,6 +234,6 @@ public class ServicePersonTerminal {
     serviceFrame.mainPanel.setLayout(null);
     serviceFrame.mainPanel.add(lastMessage);
     serviceFrame.mainPanel.add(loadPanel);
-    serviceFrame.mainPanel.add(availablePanel);
+    serviceFrame.mainPanel.add(avaliablePanel);
   }
 }
