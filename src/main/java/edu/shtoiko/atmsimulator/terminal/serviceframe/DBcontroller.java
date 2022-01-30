@@ -1,10 +1,10 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
-import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
+import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
 
 public abstract class DBcontroller {
 
-    protected static int[] loadBanknotes(int[] load, int sum, String name){
+    protected static void loadBanknotes(int[] load, int sum, String name){
         switch (name) {
             case ("fifty"):
                 load[0] = sum;
@@ -22,21 +22,21 @@ public abstract class DBcontroller {
                 load[4] = sum;
                 break;
         }
-        return load;
+//        return load;
     }
 
     protected static int GetBanknotesQuantity(String name){
     switch (name) {
       case ("fifty"):
-        return DBsimulator.getFifty();
+        return DataWarehouseInterface.getFifty();
       case ("hundred"):
-        return DBsimulator.getHundred();
+        return DataWarehouseInterface.getHundred();
       case ("twoHundred"):
-        return DBsimulator.getTwoHundred();
+        return DataWarehouseInterface.getTwoHundred();
       case ("fiveHundred"):
-        return DBsimulator.getFiveHundred();
+        return DataWarehouseInterface.getFiveHundred();
       case ("thousand"):
-        return DBsimulator.getThousand();
+        return DataWarehouseInterface.getThousand();
     }
         return 0;
     }
