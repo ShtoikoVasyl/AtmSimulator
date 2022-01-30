@@ -2,9 +2,30 @@ package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
 import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
 
-public abstract class GetBanknotes {
+public abstract class DBcontroller {
 
-    public static int GetBanknotesQuantity(String name){
+    protected static int[] loadBanknotes(int[] load, int sum, String name){
+        switch (name) {
+            case ("fifty"):
+                load[0] = sum;
+                break;
+            case ("hundred"):
+                load[1] = sum;
+                break;
+            case ("twoHundred"):
+                load[2] = sum;
+                break;
+            case ("fiveHundred"):
+                load[3] = sum;
+                break;
+            case ("thousand"):
+                load[4] = sum;
+                break;
+        }
+        return load;
+    }
+
+    protected static int GetBanknotesQuantity(String name){
     switch (name) {
       case ("fifty"):
         return DBsimulator.getFifty();
