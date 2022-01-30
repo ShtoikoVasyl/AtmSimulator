@@ -1,20 +1,21 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
-import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
 import javax.swing.*;
 import java.awt.*;
 
 public class AvaliableBanknotesLabel extends JPanel {
+    protected String name;
     protected String text;
     protected JLabel right;
     protected JLabel left;
-    public AvaliableBanknotesLabel(int vertical, String text){
+    public AvaliableBanknotesLabel(int vertical, String text, String name){
+        this.name = name;
         this.setLayout(null);
         this.setBounds(0,vertical,180,30);
         this.text = text;
         this.right = new JLabel();
         right.setBounds(115,0,65,30);
-        right.setText(Integer.toString(DBsimulator.getFifty()));
+        right.setText(Integer.toString(DBcontroller.GetBanknotesQuantity(this.name)));
         right.setHorizontalAlignment(JLabel.RIGHT);
 
         this.left = new JLabel();
@@ -28,4 +29,5 @@ public class AvaliableBanknotesLabel extends JPanel {
     public void setQuantity(String text){
         this.right.setText(text);
     }
+
 }

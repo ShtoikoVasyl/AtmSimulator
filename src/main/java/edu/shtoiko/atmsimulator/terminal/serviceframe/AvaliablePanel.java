@@ -15,17 +15,17 @@ public class AvaliablePanel extends JPanel {
 
     public AvaliablePanel(){
         this.setLayout(null);
-        fifty = new AvaliableBanknotesLabel(20, "Fifty:");
+        fifty = new AvaliableBanknotesLabel(20, "Fifty:", "fifty");
         this.add(fifty);
-        hundred = new AvaliableBanknotesLabel(60, "Hundred:");
+        hundred = new AvaliableBanknotesLabel(60, "Hundred:", "hundred");
         this.add(hundred);
-        twoHundred = new AvaliableBanknotesLabel(100, "Two hundred:");
+        twoHundred = new AvaliableBanknotesLabel(100, "Two hundred:", "twoHundred");
         this.add(twoHundred);
-        fiveHundred = new AvaliableBanknotesLabel(140, "Five hundred:");
+        fiveHundred = new AvaliableBanknotesLabel(140, "Five hundred:", "fiveHundred");
         this.add(fiveHundred);
-        thousand = new AvaliableBanknotesLabel(180, "Thousand:");
+        thousand = new AvaliableBanknotesLabel(180, "Thousand:", "thousand");
         this.add(thousand);
-        this.totalBanknotes = new AvaliableBanknotesLabel(230,"Total quantity:");
+        this.totalBanknotes = new AvaliableBanknotesLabel(230,"Total quantity:", "totalQuantity");
         totalBanknotes.right.setText(Integer.toString(DBsimulator.getTotalBanknotes()));
         totalBanknotes.right.setFont(new Font("", Font.BOLD, 15));
         totalBanknotes.right.setForeground(new Color(175, 65, 55));

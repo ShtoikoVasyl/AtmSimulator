@@ -3,7 +3,7 @@ package edu.shtoiko.atmsimulator.controllers;
 import java.util.Arrays;
 
 /** checking the possibility of output */
-public class Withdrafting {
+public class Withdrawing {
 
   /** request sum to withdraw */
   private int withdraftRequestSum;
@@ -24,7 +24,7 @@ public class Withdrafting {
    *
    * @param withdraftRequestSum request sum to withdraw
    */
-  public Withdrafting(int withdraftRequestSum) {
+  protected Withdrawing(int withdraftRequestSum) {
     this.withdraftRequestSum = withdraftRequestSum;
     outputingBanknotes = withdraftRequest(this.withdraftRequestSum);
   }

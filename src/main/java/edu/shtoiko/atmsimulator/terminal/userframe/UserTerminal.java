@@ -1,9 +1,9 @@
 package edu.shtoiko.atmsimulator.terminal.userframe;
 
-import edu.shtoiko.atmsimulator.controllers.Withdrafting;
+import edu.shtoiko.atmsimulator.controllers.ControllerInterface;
+import edu.shtoiko.atmsimulator.controllers.Withdrawing;
 import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
 import edu.shtoiko.atmsimulator.terminal.mainframetemplate.TerminalFrame;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -45,27 +45,27 @@ public class UserTerminal extends JFrame {
           public void actionPerformed(ActionEvent e) {
             String input = inputSum.getText();
             int sum = Integer.parseInt(input);
-            Withdrafting withdrafting = new Withdrafting(sum);
-            int[] withdraftBanknotes = withdrafting.getOutputingBanknotes();
+            Withdrawing withdrawing = (Withdrawing) ControllerInterface.withdrawRequest(sum);
+            int[] withdrawBanknotes = withdrawing.getOutputingBanknotes();
             String messageUpdate = "Withdraw complete";
 
             JOptionPane.showMessageDialog(
                 new JPanel(),
                 "withdraw: \n"
                     + "fifty - "
-                    + withdraftBanknotes[0]
+                    + withdrawBanknotes[0]
                     + "\n"
                     + "hundred - "
-                    + withdraftBanknotes[1]
+                    + withdrawBanknotes[1]
                     + "\n"
                     + "two hundred - "
-                    + withdraftBanknotes[2]
+                    + withdrawBanknotes[2]
                     + "\n"
                     + "five hundred - "
-                    + withdraftBanknotes[3]
+                    + withdrawBanknotes[3]
                     + "\n"
                     + "thousand - "
-                    + withdraftBanknotes[4]
+                    + withdrawBanknotes[4]
                     + "\n");
             String message =
                 ("<html><div style= 'text-align: center;'>What amount do you want to get?<br>Available banknotes: "

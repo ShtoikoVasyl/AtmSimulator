@@ -50,7 +50,7 @@ public class WithdrawCheck {
     if (sumOfWithdrawRequest != requestSumOfWithdraw) {
       System.out.println(
           "Sorry we can't withdraw this amount, we can give out "
-              + Withdrafting.avaliableSum(withdrawBanknotes));
+              + Withdrawing.avaliableSum(withdrawBanknotes));
       Arrays.fill(withdrawBanknotes, 0);
       System.out.println("Error, check amount failed!");
       return withdrawBanknotes;

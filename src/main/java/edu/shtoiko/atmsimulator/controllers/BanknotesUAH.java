@@ -51,7 +51,7 @@ public class BanknotesUAH {
     int[] withdrawBanknotes = new int[5];
     int[] availableBanknotes = new int[] {fifty, hundred, twoHundred, fiveHundred, thousand};
     if (WithdrawCheck.withdrawRequestCheck(withdrawSum, multiplicity())) {
-      withdrawBanknotes = Withdrafting.withdraft(availableBanknotes, withdrawSum);
+      withdrawBanknotes = Withdrawing.withdraft(availableBanknotes, withdrawSum);
       outputBanknotes(withdrawBanknotes);
       return withdrawBanknotes;
     }
