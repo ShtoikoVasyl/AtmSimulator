@@ -1,6 +1,7 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
 import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
+import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,7 +35,7 @@ public class LoadPanel extends JPanel {
 
 
         this.loadToMaxLeft = new JLabel();
-        loadToMaxLeft.setText(Integer.toString(maxTotalBanknotes - DBsimulator.getTotalBanknotes()));
+        loadToMaxLeft.setText(Integer.toString(maxTotalBanknotes - DataWarehouseInterface.getTotalBanknotes()));
         loadToMaxLeft.setFont(new Font("", Font.BOLD, 15));
         loadToMaxLeft.setBounds(15, 230, 130, 30);
         JLabel loadToMaxRight = new JLabel();

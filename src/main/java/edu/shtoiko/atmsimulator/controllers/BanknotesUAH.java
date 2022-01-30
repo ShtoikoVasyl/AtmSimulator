@@ -1,45 +1,34 @@
 package edu.shtoiko.atmsimulator.controllers;
 
-import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
+import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
 
 /** currency Ukrainian hryvnia(BanknotesUAH) */
 public class BanknotesUAH {
 
   /** number of banknotes denomination of fifty */
-  private int fifty;
+  private final int fifty;
 
   /** number of banknotes denomination of one hundred */
-  private int hundred;
+  private final int hundred;
 
   /** number of banknotes denomination of two hundred */
-  private int twoHundred;
+  private final int twoHundred;
 
   /** number of banknotes denomination of five hundred */
-  private int fiveHundred;
+  private final int fiveHundred;
 
   /** number of banknotes denomination of one thousand */
-  private int thousand;
-
-  /** get totalBanknotes */
-  private final int totalBanknotes = fifty + hundred + twoHundred + fiveHundred + thousand;
+  private final int thousand;
 
   /** constructor of BanknotesUAH */
   protected BanknotesUAH() {
-    this.fifty = DBsimulator.getFifty();
-    this.hundred = DBsimulator.getHundred();
-    this.twoHundred = DBsimulator.getTwoHundred();
-    this.fiveHundred = DBsimulator.getFiveHundred();
-    this.thousand = DBsimulator.getThousand();
+    this.fifty = DataWarehouseInterface.getFifty();
+    this.hundred = DataWarehouseInterface.getHundred();
+    this.twoHundred = DataWarehouseInterface.getTwoHundred();
+    this.fiveHundred = DataWarehouseInterface.getFiveHundred();
+    this.thousand = DataWarehouseInterface.getThousand();
   }
 
-  /**
-   * to get total quantity of banknotes
-   *
-   * @return total quantity
-   */
-  public int getTotalBanknotes() {
-    return totalBanknotes;
-  }
 
   /**
    * withdraft from avaliable quantity of banknotes
@@ -47,7 +36,7 @@ public class BanknotesUAH {
    * @param withdrawSum sum to withdrafting from request
    * @return array with quantity of banknotes(fifty, hundred, twoHundred, fiveHundred, thousand)
    */
-  protected int[] withdraft(int withdrawSum) {
+  protected int[] withdraw(int withdrawSum) {
     int[] withdrawBanknotes = new int[5];
     int[] availableBanknotes = new int[] {fifty, hundred, twoHundred, fiveHundred, thousand};
     if (WithdrawCheck.withdrawRequestCheck(withdrawSum, multiplicity())) {
@@ -66,11 +55,11 @@ public class BanknotesUAH {
    * @deprecated must be replaced with DBsimulator
    */
   private void outputBanknotes(int[] output) {
-    DBsimulator.takeOutFifty(output[0]);
-    DBsimulator.takeOutHundred(output[1]);
-    DBsimulator.takeOutTwoHundred(output[2]);
-    DBsimulator.takeOutFiveHundred(output[3]);
-    DBsimulator.takeOutThousand(output[4]);
+    DataWarehouseInterface.takeOutFifty(output[0]);
+    DataWarehouseInterface.takeOutHundred(output[1]);
+    DataWarehouseInterface.takeOutTwoHundred(output[2]);
+    DataWarehouseInterface.takeOutFiveHundred(output[3]);
+    DataWarehouseInterface.takeOutThousand(output[4]);
   }
 
   /**
@@ -79,19 +68,19 @@ public class BanknotesUAH {
    * @return multiplicity of available banknotes
    */
   protected int multiplicity() {
-    if (fifty != 0) {
+    if (0 != fifty) {
       return 50;
     }
-    if (hundred != 0) {
+    if (0 != hundred) {
       return 100;
     }
-    if (twoHundred != 0) {
+    if (0 != twoHundred) {
       return 200;
     }
-    if (fiveHundred != 0) {
+    if (0 != fiveHundred) {
       return 500;
     }
-    if (thousand != 0) {
+    if (0 != thousand) {
       return 1000;
     } else {
       return 0;

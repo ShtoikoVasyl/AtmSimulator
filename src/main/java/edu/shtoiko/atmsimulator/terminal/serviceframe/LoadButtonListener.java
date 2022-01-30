@@ -2,6 +2,7 @@ package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
 import edu.shtoiko.atmsimulator.datawarehouse.ATMloading;
 import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
+import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,18 +12,19 @@ import java.awt.event.ActionListener;
 public class LoadButtonListener implements ActionListener {
     InputPanel inputPanel;
     LoadPanel loadPanel;
-    AvaliablePanel avaliablePanel;
-    AvaliableBanknotesLabel avaliableBanknotesLabel;
+    AvailablePanel availablePanel;
+    AvailableBanknotesLabel availableBanknotesLabel;
     JLabel lastMessage;
     String text;
 
 
-    public LoadButtonListener( AvaliablePanel avaliablePanel,AvaliableBanknotesLabel avaliableBanknotesLabel,  LoadPanel loadPanel, InputPanel inputPanel, JLabel lastMessage, String text){
+    public LoadButtonListener(AvailablePanel availablePanel, AvailableBanknotesLabel availableBanknotesLabel, LoadPanel loadPanel, InputPanel inputPanel, JLabel lastMessage, String text){
         this.inputPanel = inputPanel;
-        this.avaliablePanel = avaliablePanel;
+        this.availablePanel = availablePanel;
         this.loadPanel = loadPanel;
         this.lastMessage = lastMessage;
-        this.avaliableBanknotesLabel = avaliableBanknotesLabel;
+        this.availableBanknotesLabel = availableBanknotesLabel;
+        this.text = text;
     }
 
     @Override
@@ -30,9 +32,7 @@ public class LoadButtonListener implements ActionListener {
         String input = inputPanel.inputField.getText();
         int sum = Integer.parseInt(input);
         int[] load = new int[5];
-
-        load = DBcontroller.loadBanknotes(load, sum, avaliableBanknotesLabel.name);
-
+        DBcontroller.loadBanknotes(load, sum, availableBanknotesLabel.name);
         ATMloading loading = new ATMloading();
         if (loading.ATMload(load)) {
             lastMessage.setText("You load " + sum + " banknotes of " + text +" denomination.");
@@ -42,10 +42,10 @@ public class LoadButtonListener implements ActionListener {
             lastMessage.setForeground(new Color(205, 85, 74));
         }
         inputPanel.inputField.setText("");
-        avaliableBanknotesLabel.setQuantity(Integer.toString(DBcontroller.GetBanknotesQuantity(avaliableBanknotesLabel.name)));
-        avaliablePanel.totalBanknotes.setQuantity(Integer.toString(DBsimulator.getTotalBanknotes()));
+        availableBanknotesLabel.setQuantity(Integer.toString(DBcontroller.GetBanknotesQuantity(availableBanknotesLabel.name)));
+        availablePanel.totalBanknotes.setQuantity(Integer.toString(DataWarehouseInterface.getTotalBanknotes()));
         loadPanel.loadToMaxLeft.setText(
-                Integer.toString(loadPanel.getMaxTotalBanknotes() - DBsimulator.getTotalBanknotes()));
+                Integer.toString(loadPanel.getMaxTotalBanknotes() - DataWarehouseInterface.getTotalBanknotes()));
     }
 
 }

@@ -1,32 +1,33 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
 import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
+import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class AvaliablePanel extends JPanel {
-    protected AvaliableBanknotesLabel fifty;
-    protected AvaliableBanknotesLabel hundred;
-    protected AvaliableBanknotesLabel twoHundred;
-    protected AvaliableBanknotesLabel fiveHundred;
-    protected AvaliableBanknotesLabel thousand;
-    protected AvaliableBanknotesLabel totalBanknotes;
+public class AvailablePanel extends JPanel {
+    protected AvailableBanknotesLabel fifty;
+    protected AvailableBanknotesLabel hundred;
+    protected AvailableBanknotesLabel twoHundred;
+    protected AvailableBanknotesLabel fiveHundred;
+    protected AvailableBanknotesLabel thousand;
+    protected AvailableBanknotesLabel totalBanknotes;
 
-    public AvaliablePanel(){
+    public AvailablePanel(){
         this.setLayout(null);
-        fifty = new AvaliableBanknotesLabel(20, "Fifty:", "fifty");
+        fifty = new AvailableBanknotesLabel(20, "Fifty:", "fifty");
         this.add(fifty);
-        hundred = new AvaliableBanknotesLabel(60, "Hundred:", "hundred");
+        hundred = new AvailableBanknotesLabel(60, "Hundred:", "hundred");
         this.add(hundred);
-        twoHundred = new AvaliableBanknotesLabel(100, "Two hundred:", "twoHundred");
+        twoHundred = new AvailableBanknotesLabel(100, "Two hundred:", "twoHundred");
         this.add(twoHundred);
-        fiveHundred = new AvaliableBanknotesLabel(140, "Five hundred:", "fiveHundred");
+        fiveHundred = new AvailableBanknotesLabel(140, "Five hundred:", "fiveHundred");
         this.add(fiveHundred);
-        thousand = new AvaliableBanknotesLabel(180, "Thousand:", "thousand");
+        thousand = new AvailableBanknotesLabel(180, "Thousand:", "thousand");
         this.add(thousand);
-        this.totalBanknotes = new AvaliableBanknotesLabel(230,"Total quantity:", "totalQuantity");
-        totalBanknotes.right.setText(Integer.toString(DBsimulator.getTotalBanknotes()));
+        this.totalBanknotes = new AvailableBanknotesLabel(230,"Total quantity:", "totalQuantity");
+        totalBanknotes.right.setText(Integer.toString(DataWarehouseInterface.getTotalBanknotes()));
         totalBanknotes.right.setFont(new Font("", Font.BOLD, 15));
         totalBanknotes.right.setForeground(new Color(175, 65, 55));
         totalBanknotes.right.setHorizontalAlignment(JLabel.RIGHT);

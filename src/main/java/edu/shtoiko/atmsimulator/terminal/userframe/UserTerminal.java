@@ -2,7 +2,7 @@ package edu.shtoiko.atmsimulator.terminal.userframe;
 
 import edu.shtoiko.atmsimulator.controllers.ControllerInterface;
 import edu.shtoiko.atmsimulator.controllers.Withdrawing;
-import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
+import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
 import edu.shtoiko.atmsimulator.terminal.mainframetemplate.TerminalFrame;
 import javax.swing.*;
 import java.awt.*;
@@ -22,7 +22,7 @@ public class UserTerminal extends JFrame {
 
     String message =
         ("<html><div style= 'text-align: center;'>What amount do you want to get?<br>Available banknotes: "
-            + DBsimulator.getAvailableBanknotes()
+            + DataWarehouseInterface.getAvailableBanknotes()
             + "</div></html>");
     JLabel text = new JLabel("", SwingConstants.CENTER);
     text.setText(message);
@@ -69,7 +69,7 @@ public class UserTerminal extends JFrame {
                     + "\n");
             String message =
                 ("<html><div style= 'text-align: center;'>What amount do you want to get?<br>Available banknotes: "
-                    + DBsimulator.getAvailableBanknotes()
+                    + DataWarehouseInterface.getAvailableBanknotes()
                     + "</div></html>");
 
             text.setText(message);

@@ -38,7 +38,7 @@ public class Withdrawing {
   private int[] withdraftRequest(int withdraftRequestSum) {
     int[] withdrawBanknotes;
     BanknotesUAH withdraftBanknotesUAH = new BanknotesUAH();
-    withdrawBanknotes = withdraftBanknotesUAH.withdraft(withdraftRequestSum);
+    withdrawBanknotes = withdraftBanknotesUAH.withdraw(withdraftRequestSum);
     return withdrawBanknotes;
   }
 

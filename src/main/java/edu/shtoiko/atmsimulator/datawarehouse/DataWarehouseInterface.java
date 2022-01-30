@@ -1,11 +1,34 @@
 package edu.shtoiko.atmsimulator.datawarehouse;
 
 public abstract class DataWarehouseInterface {
+    /** to load fifty denomination banknotes */
+    protected static void loadFifty(int fifty) {
+        DBsimulator.loadFifty(fifty);
+    }
+
+    /** to load one hundred denomination banknotes */
+    protected static void loadHundred(int hundred) {
+        DBsimulator.loadHundred(hundred);
+    }
+
+    /** to load two hundred denomination banknotes */
+    protected static void loadTwoHundred(int twoHundred) {DBsimulator.loadTwoHundred(twoHundred);}
+
+    /** to load five hundred denomination banknotes */
+    protected static void loadFiveHundred(int fiveHundred) {
+        DBsimulator.loadFiveHundred(fiveHundred);
+    }
+
+    /** to load thousands denomination banknotes */
+    protected static void loadThousand(int thousand) {
+        DBsimulator.loadThousand(thousand);
+    }
+
+
     /** to withdraw fifty denomination banknotes */
     public static void takeOutFifty(int fifty) {
         DBsimulator.takeOutFifty(fifty);
     }
-
 
     /** to withdraw one hundred denomination banknotes */
     public static void takeOutHundred(int hundred) {

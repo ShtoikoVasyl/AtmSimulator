@@ -3,12 +3,12 @@ package edu.shtoiko.atmsimulator.terminal.serviceframe;
 import javax.swing.*;
 import java.awt.*;
 
-public class AvaliableBanknotesLabel extends JPanel {
+public class AvailableBanknotesLabel extends JPanel {
     protected String name;
     protected String text;
     protected JLabel right;
     protected JLabel left;
-    public AvaliableBanknotesLabel(int vertical, String text, String name){
+    public AvailableBanknotesLabel(int vertical, String text, String name){
         this.name = name;
         this.setLayout(null);
         this.setBounds(0,vertical,180,30);
