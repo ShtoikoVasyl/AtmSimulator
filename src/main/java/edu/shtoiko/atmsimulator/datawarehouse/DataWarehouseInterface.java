@@ -72,15 +72,30 @@ public abstract class DataWarehouseInterface {
     }
 
 
-
+    /**
+     * Generate message whith available banknotes
+     * @return String message
+     * @deprecated must be replaced
+     */
     public static String getAvailableBanknotes(){
         return DataWarehouseController.getAvailableBanknotes();
     }
 
+    /**
+     * to get total quantity of banknotes
+     *
+     * @return total quantity
+     * @deprecated must be replaced
+     */
     public static int getTotalBanknotes() {
         return DataWarehouseController.getTotalBanknotes();
     }
 
+    /**
+     * write the number of available banknotes in the console
+     *
+     * @deprecated must be replaced
+     */
     public static int[] getResource() {
         return  DataWarehouseController.getResource();
     }

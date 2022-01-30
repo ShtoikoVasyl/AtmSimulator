@@ -13,7 +13,7 @@ public class Withdrawing {
   /**
    * to receive the issued banknotes
    *
-   * @return @return array with quantity of banknotes(fifty, hundred, twoHundred, fiveHundred, thousand)
+   * @return return array with quantity of banknotes(fifty, hundred, twoHundred, fiveHundred, thousand)
    */
   public int[] getOutputingBanknotes() {
     return outputingBanknotes;

@@ -2,6 +2,7 @@ package edu.shtoiko.atmsimulator.terminal.mainframetemplate;
 
 import javax.swing.*;
 
+/** terminal frame template*/
 public class TerminalFrame extends JFrame {
   public MainTerminalPanel mainPanel;
 

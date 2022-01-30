@@ -1,14 +1,13 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
 import edu.shtoiko.atmsimulator.datawarehouse.ATMloading;
-import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
 import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/** the class responsible for loading banknotes after pressing the button */
 public class LoadButtonListener implements ActionListener {
     InputPanel inputPanel;
     LoadPanel loadPanel;
@@ -16,8 +15,6 @@ public class LoadButtonListener implements ActionListener {
     AvailableBanknotesLabel availableBanknotesLabel;
     JLabel lastMessage;
     String text;
-
-
     public LoadButtonListener(AvailablePanel availablePanel, AvailableBanknotesLabel availableBanknotesLabel, LoadPanel loadPanel, InputPanel inputPanel, JLabel lastMessage, String text){
         this.inputPanel = inputPanel;
         this.availablePanel = availablePanel;
@@ -27,6 +24,8 @@ public class LoadButtonListener implements ActionListener {
         this.text = text;
     }
 
+    /** after clicking the button,
+     * the appropriate changes are made to the availablePanel, loadPanel, database and set a message*/
     @Override
     public void actionPerformed(ActionEvent e) {
         String input = inputPanel.inputField.getText();
@@ -47,5 +46,4 @@ public class LoadButtonListener implements ActionListener {
         loadPanel.loadToMaxLeft.setText(
                 Integer.toString(loadPanel.getMaxTotalBanknotes() - DataWarehouseInterface.getTotalBanknotes()));
     }
-
 }

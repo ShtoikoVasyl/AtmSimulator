@@ -3,6 +3,7 @@ package edu.shtoiko.atmsimulator.terminal.serviceframe;
 import javax.swing.*;
 import java.awt.*;
 
+/** panel used to display available banknotes on the available panel */
 public class AvailableBanknotesLabel extends JPanel {
     protected String name;
     protected String text;
@@ -14,20 +15,19 @@ public class AvailableBanknotesLabel extends JPanel {
         this.setBounds(0,vertical,180,30);
         this.text = text;
         this.right = new JLabel();
-        right.setBounds(115,0,65,30);
-        right.setText(Integer.toString(DBcontroller.GetBanknotesQuantity(this.name)));
-        right.setHorizontalAlignment(JLabel.RIGHT);
-
+            right.setBounds(115,0,65,30);
+            right.setText(Integer.toString(DBcontroller.GetBanknotesQuantity(this.name)));
+            right.setHorizontalAlignment(JLabel.RIGHT);
         this.left = new JLabel();
-        left.setText(text);
-        left.setBounds(15,0,100,30);
-        left.setForeground(new Color(127, 127, 127));
+            left.setText(text);
+            left.setBounds(15,0,100,30);
+            left.setForeground(new Color(127, 127, 127));
         this.add(left);
         this.add(right);
     }
 
+    /** set text with a quantity of banknotes */
     public void setQuantity(String text){
         this.right.setText(text);
     }
-
 }

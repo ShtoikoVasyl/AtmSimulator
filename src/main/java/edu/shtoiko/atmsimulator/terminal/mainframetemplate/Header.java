@@ -3,8 +3,8 @@ package edu.shtoiko.atmsimulator.terminal.mainframetemplate;
 import javax.swing.*;
 import java.awt.*;
 
+/** frame header template */
 public class Header extends JPanel{
-
     protected Header() {
         this.setBounds(0, 0, 615, 125);
         this.setBackground(Color.WHITE);

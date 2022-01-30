@@ -2,8 +2,10 @@ package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
 import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
 
+/** class to interact with the database  */
 public abstract class DBcontroller {
 
+    /** determines which index of the array corresponds to this denomination */
     protected static void loadBanknotes(int[] load, int sum, String name){
         switch (name) {
             case ("fifty"):
@@ -22,9 +24,9 @@ public abstract class DBcontroller {
                 load[4] = sum;
                 break;
         }
-//        return load;
     }
 
+    /** determines which banknotes you want to get the quantity */
     protected static int GetBanknotesQuantity(String name){
     switch (name) {
       case ("fifty"):

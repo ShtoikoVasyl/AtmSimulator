@@ -1,6 +1,12 @@
 package edu.shtoiko.atmsimulator.datawarehouse;
 
 public abstract class DataWarehouseController {
+
+    /**
+     * Generate message whith available banknotes
+     * @return String message
+     * @deprecated must be replaced
+     */
     protected static String getAvailableBanknotes() {
         String message = "";
         if (DataWarehouseInterface.getThousand() != 0) {
@@ -25,6 +31,7 @@ public abstract class DataWarehouseController {
      * to get total quantity of banknotes
      *
      * @return total quantity
+     * @deprecated must be replaced
      */
     protected static int getTotalBanknotes() {
         int total = DataWarehouseInterface.getFifty() + DataWarehouseInterface.getHundred() + DataWarehouseInterface.getTwoHundred() + DataWarehouseInterface.getFiveHundred() + DataWarehouseInterface.getThousand();

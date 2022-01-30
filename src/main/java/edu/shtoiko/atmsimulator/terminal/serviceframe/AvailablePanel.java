@@ -6,6 +6,9 @@ import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * a panel showing all available banknotes and their total quantity
+ */
 public class AvailablePanel extends JPanel {
     protected AvailableBanknotesLabel fifty;
     protected AvailableBanknotesLabel hundred;
@@ -39,7 +42,7 @@ public class AvailablePanel extends JPanel {
         this.add(totalBanknotes);
     }
 
-
+/** set loadPanel background and their availableLabel*/
     public void setBackgroundColor(Color color){
         this.setBackground(color);
         fifty.setBackground(color);
