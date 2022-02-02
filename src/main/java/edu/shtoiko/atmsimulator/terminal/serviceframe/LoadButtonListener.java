@@ -2,8 +2,8 @@ package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
 import edu.shtoiko.atmsimulator.datawarehouse.ATMloading;
 import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JLabel;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

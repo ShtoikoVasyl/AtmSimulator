@@ -1,7 +1,8 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Color;
 
 /** panel used to display available banknotes on the available panel */
 public class AvailableBanknotesLabel extends JPanel {

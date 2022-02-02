@@ -1,9 +1,12 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
 import edu.shtoiko.atmsimulator.terminal.mainframetemplate.TerminalFrame;
-import javax.swing.*;
+
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.border.TitledBorder;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 
 /** service frame, displays available banknotes and allows load banknotes */
 public class ServicePersonTerminal {

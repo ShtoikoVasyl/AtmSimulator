@@ -1,7 +1,9 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.awt.Color;
 
 /** a panel that contains an input field and a button to load banknotes */
 public class InputPanel extends JPanel {

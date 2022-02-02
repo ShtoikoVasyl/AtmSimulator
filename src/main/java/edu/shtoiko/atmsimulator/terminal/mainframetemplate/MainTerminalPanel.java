@@ -1,6 +1,6 @@
 package edu.shtoiko.atmsimulator.terminal.mainframetemplate;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 /**
  * main area template panel on TerminalFrame

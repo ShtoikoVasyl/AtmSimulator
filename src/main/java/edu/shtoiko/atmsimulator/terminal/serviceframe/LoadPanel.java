@@ -2,8 +2,10 @@ package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
 import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Font;
 
 /** a panel that displays an interface for loading banknotes of different denominations */
 public class LoadPanel extends JPanel {
