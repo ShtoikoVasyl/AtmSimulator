@@ -16,7 +16,7 @@ public class LoadButtonListener implements ActionListener {
     JLabel lastMessage;
     String text;
     public LoadButtonListener(AvailablePanel availablePanel, AvailableBanknotesLabel availableBanknotesLabel, LoadPanel loadPanel, InputPanel inputPanel, JLabel lastMessage, String text){
-        this.inputPanel = inputPanel;
+    this.inputPanel = inputPanel;
         this.availablePanel = availablePanel;
         this.loadPanel = loadPanel;
         this.lastMessage = lastMessage;

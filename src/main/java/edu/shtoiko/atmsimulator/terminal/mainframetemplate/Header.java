@@ -11,11 +11,11 @@ import java.awt.Color;
 /** frame header template */
 public class Header extends JPanel{
     protected Header() {
-        this.setBounds(0, 0, 615, 125);
-        this.setBackground(Color.WHITE);
-        this.setLayout(null);
+        setBounds(0, 0, 615, 125);
+        setBackground(Color.WHITE);
+        setLayout(null);
         JLabel logo = new JLabel(new ImageIcon(""));
         logo.setBounds(35, 15, 300, 100);
-        this.add(logo);
+        add(logo);
     }
 }
