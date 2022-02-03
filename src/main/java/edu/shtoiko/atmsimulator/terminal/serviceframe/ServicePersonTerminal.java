@@ -1,6 +1,6 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
-import edu.shtoiko.atmsimulator.terminal.Listeners.TerminalWindowListener;
+import edu.shtoiko.atmsimulator.terminal.listeners.TerminalWindowListener;
 import edu.shtoiko.atmsimulator.terminal.mainframetemplate.TerminalFrame;
 
 import javax.swing.BorderFactory;
@@ -13,9 +13,7 @@ import java.awt.Font;
 /** service frame, displays available banknotes and allows load banknotes */
 public class ServicePersonTerminal {
 
-  /** super frame */
-  JFrame superFrame;
-
+  /** @param superFrame the frame that will need to be processed in WindowListener */
   public ServicePersonTerminal(JFrame superFrame) {
     TerminalFrame serviceFrame = new TerminalFrame();
     serviceFrame.addWindowListener( new TerminalWindowListener(superFrame));

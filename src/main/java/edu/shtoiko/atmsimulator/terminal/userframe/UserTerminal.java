@@ -3,7 +3,7 @@ package edu.shtoiko.atmsimulator.terminal.userframe;
 import edu.shtoiko.atmsimulator.controllers.ControllerInterface;
 import edu.shtoiko.atmsimulator.controllers.Withdrawing;
 import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
-import edu.shtoiko.atmsimulator.terminal.Listeners.TerminalWindowListener;
+import edu.shtoiko.atmsimulator.terminal.listeners.TerminalWindowListener;
 import edu.shtoiko.atmsimulator.terminal.mainframetemplate.TerminalFrame;
 
 import javax.swing.JButton;
@@ -23,9 +23,6 @@ import java.awt.event.ActionListener;
  * displayed and changes to the database
  */
 public class UserTerminal {
-
-  /** super frame */
-  JFrame superFrame;
 
   public UserTerminal(JFrame superFrame) {
     TerminalFrame userFrame = new TerminalFrame();

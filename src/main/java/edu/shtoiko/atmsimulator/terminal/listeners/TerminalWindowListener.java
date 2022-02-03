@@ -1,4 +1,4 @@
-package edu.shtoiko.atmsimulator.terminal.Listeners;
+package edu.shtoiko.atmsimulator.terminal.listeners;
 
 import javax.swing.JFrame;
 import java.awt.event.WindowEvent;
