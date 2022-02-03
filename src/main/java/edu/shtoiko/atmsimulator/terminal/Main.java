@@ -12,6 +12,7 @@ import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,10 +25,15 @@ public class Main {
       throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException,
           IllegalAccessException {
     UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-    JFrame frame = new JFrame("ATM");
-    frame.setBounds(300, 100, 300, 300);
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setLayout(new BorderLayout());
+      EventQueue.invokeLater(new Runnable() {
+          @Override
+          public void run() {
+
+    JFrame mainFrame = new JFrame("ATM");
+
+    mainFrame.setBounds(300, 100, 300, 300);
+    mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    mainFrame.setLayout(new BorderLayout());
     ButtonGroup choice = new ButtonGroup();
     JRadioButton user = new JRadioButton("User", true);
     choice.add(user);
@@ -47,11 +53,13 @@ public class Main {
           public void actionPerformed(ActionEvent e) {
             if (user.isSelected()) {
               text.setText(message + "User");
-              UserTerminal user = new UserTerminal();
+              mainFrame.setVisible(false);
+              UserTerminal user = new UserTerminal(mainFrame);
             }
             if (service.isSelected()) {
               text.setText(message + "Service");
-              ServicePersonTerminal service = new ServicePersonTerminal();
+              mainFrame.setVisible(false);
+              ServicePersonTerminal service = new ServicePersonTerminal(mainFrame);
             }
           }
         });
@@ -62,7 +70,10 @@ public class Main {
         panel.add(service, BorderLayout.EAST);
         panel.add(user, BorderLayout.WEST);
         panel.add(autorized, BorderLayout.SOUTH);
-    frame.getContentPane().add(panel);
-    frame.setVisible(true);
+    mainFrame.getContentPane().add(panel);
+    mainFrame.setVisible(true);
+
+          }
+      });
   }
 }

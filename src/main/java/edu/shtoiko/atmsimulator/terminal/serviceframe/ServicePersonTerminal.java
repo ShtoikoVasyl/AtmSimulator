@@ -1,8 +1,10 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
+import edu.shtoiko.atmsimulator.terminal.Listeners.TerminalWindowListener;
 import edu.shtoiko.atmsimulator.terminal.mainframetemplate.TerminalFrame;
 
 import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.border.TitledBorder;
 import java.awt.Color;
@@ -11,8 +13,13 @@ import java.awt.Font;
 /** service frame, displays available banknotes and allows load banknotes */
 public class ServicePersonTerminal {
 
-  public ServicePersonTerminal() {
+  /** super frame */
+  JFrame superFrame;
+
+  public ServicePersonTerminal(JFrame superFrame) {
     TerminalFrame serviceFrame = new TerminalFrame();
+    serviceFrame.addWindowListener( new TerminalWindowListener(superFrame));
+    serviceFrame.setTitle("Service terminal");
     JLabel lastMessage = new JLabel();
     lastMessage.setText("Welcome, you authorized as service personal.");
     lastMessage.setHorizontalAlignment(JLabel.CENTER);
