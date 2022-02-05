@@ -5,22 +5,21 @@ package edu.shtoiko.atmsimulator.datawarehouse;
  *
  * @deprecated must be replaced by real database
  */
-public abstract class DBsimulator {
+public class DBsimulator {
 
   /** number of banknotes denomination of fifty */
   private static int fifty = 0;
-
   /** number of banknotes denomination of one hundred */
   private static int hundred = 0;
-
   /** number of banknotes denomination of two hundred */
   private static int twoHundred = 0;
-
   /** number of banknotes denomination of five hundred */
   private static int fiveHundred = 0;
-
   /** number of banknotes denomination of one thousand */
   private static int thousand = 0;
+
+  /** Close constructor */
+  private DBsimulator() {}
 
   /** to get fifty denomination banknotes */
   protected static int getFifty() {
@@ -33,7 +32,9 @@ public abstract class DBsimulator {
   }
 
   /** to withdraw fifty denomination banknotes */
-  protected static void takeOutFifty(int fifty) { DBsimulator.fifty -= fifty;}
+  protected static void takeOutFifty(int fifty) {
+    DBsimulator.fifty -= fifty;
+  }
 
   /** to get one hundred denomination banknotes */
   protected static int getHundred() {
@@ -94,5 +95,4 @@ public abstract class DBsimulator {
   protected static void takeOutThousand(int thousand) {
     DBsimulator.thousand -= thousand;
   }
-
 }

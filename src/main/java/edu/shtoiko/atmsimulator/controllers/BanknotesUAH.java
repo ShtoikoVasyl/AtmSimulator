@@ -22,13 +22,12 @@ public class BanknotesUAH {
 
   /** constructor of BanknotesUAH */
   protected BanknotesUAH() {
-    this.fifty = DataWarehouseInterface.getFifty();
-    this.hundred = DataWarehouseInterface.getHundred();
-    this.twoHundred = DataWarehouseInterface.getTwoHundred();
-    this.fiveHundred = DataWarehouseInterface.getFiveHundred();
-    this.thousand = DataWarehouseInterface.getThousand();
+    fifty = DataWarehouseInterface.getFifty();
+    hundred = DataWarehouseInterface.getHundred();
+    twoHundred = DataWarehouseInterface.getTwoHundred();
+    fiveHundred = DataWarehouseInterface.getFiveHundred();
+    thousand = DataWarehouseInterface.getThousand();
   }
-
 
   /**
    * withdraft from avaliable quantity of banknotes

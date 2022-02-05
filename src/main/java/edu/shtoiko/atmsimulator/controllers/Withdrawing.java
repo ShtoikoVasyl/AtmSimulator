@@ -11,15 +11,6 @@ public class Withdrawing {
   private int[] outputingBanknotes;
 
   /**
-   * to receive the issued banknotes
-   *
-   * @return return array with quantity of banknotes(fifty, hundred, twoHundred, fiveHundred, thousand)
-   */
-  public int[] getOutputingBanknotes() {
-    return outputingBanknotes;
-  }
-
-  /**
    * create withdraw request
    *
    * @param withdraftRequestSum request sum to withdraw
@@ -27,19 +18,6 @@ public class Withdrawing {
   protected Withdrawing(int withdraftRequestSum) {
     this.withdraftRequestSum = withdraftRequestSum;
     outputingBanknotes = withdraftRequest(this.withdraftRequestSum);
-  }
-
-  /**
-   * to withdrawting banknotes from ATM
-   *
-   * @param withdraftRequestSum request sum to withdraw
-   * @return array with quantity of banknotes(fifty, hundred, twoHundred, fiveHundred, thousand)
-   */
-  private int[] withdraftRequest(int withdraftRequestSum) {
-    int[] withdrawBanknotes;
-    BanknotesUAH withdraftBanknotesUAH = new BanknotesUAH();
-    withdrawBanknotes = withdraftBanknotesUAH.withdraw(withdraftRequestSum);
-    return withdrawBanknotes;
   }
 
   /**
@@ -164,5 +142,28 @@ public class Withdrawing {
     }
     Arrays.fill(withdrawBanknotes, 0);
     return avaliablrSumOfWithdrawRequest;
+  }
+
+  /**
+   * to receive the issued banknotes
+   *
+   * @return return array with quantity of banknotes(fifty, hundred, twoHundred, fiveHundred,
+   *     thousand)
+   */
+  public int[] getOutputingBanknotes() {
+    return outputingBanknotes;
+  }
+
+  /**
+   * to withdrawting banknotes from ATM
+   *
+   * @param withdraftRequestSum request sum to withdraw
+   * @return array with quantity of banknotes(fifty, hundred, twoHundred, fiveHundred, thousand)
+   */
+  private int[] withdraftRequest(int withdraftRequestSum) {
+    int[] withdrawBanknotes;
+    BanknotesUAH withdraftBanknotesUAH = new BanknotesUAH();
+    withdrawBanknotes = withdraftBanknotesUAH.withdraw(withdraftRequestSum);
+    return withdrawBanknotes;
   }
 }

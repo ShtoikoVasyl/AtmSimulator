@@ -26,7 +26,7 @@ public class UserTerminal {
 
   public UserTerminal(JFrame superFrame) {
     TerminalFrame userFrame = new TerminalFrame();
-    userFrame.addWindowListener( new TerminalWindowListener(superFrame));
+    userFrame.addWindowListener(new TerminalWindowListener(superFrame));
     userFrame.setTitle("User terminal");
     JLabel lastMessage = new JLabel();
     lastMessage.setText("Welcome, you authorized as 'USER_NAME'.");
@@ -85,6 +85,22 @@ public class UserTerminal {
             text.setText(message);
           }
         });
+    userFrame.mainPanel.setBackground(new Color(250, 255, 244));
+    userFrame.mainPanel.setLayout(null);
+    userFrame.mainPanel.add(CreateWithdrawPanel(text, inputSum, get, lastMessage));
+  }
+
+  /**
+   * Create main panel
+   *
+   * @param text welcome message and display of available banknotes
+   * @param inputSum field to input request sum
+   * @param get button to start withdraw
+   * @param lastMessage label to last message
+   * @return JPanel
+   */
+  protected JPanel CreateWithdrawPanel(
+      JLabel text, JTextField inputSum, JButton get, JLabel lastMessage) {
     JPanel withdrawPanel = new JPanel();
     withdrawPanel.setBackground(new Color(240, 240, 240));
     withdrawPanel.setBounds(70, 0, 475, 350);
@@ -93,8 +109,6 @@ public class UserTerminal {
     withdrawPanel.add(inputSum);
     withdrawPanel.add(get);
     withdrawPanel.add(lastMessage);
-    userFrame.mainPanel.setBackground(new Color(250, 255, 244));
-    userFrame.mainPanel.setLayout(null);
-    userFrame.mainPanel.add(withdrawPanel);
+    return withdrawPanel;
   }
 }

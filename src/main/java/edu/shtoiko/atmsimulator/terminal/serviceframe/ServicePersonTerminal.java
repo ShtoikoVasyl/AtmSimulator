@@ -16,7 +16,7 @@ public class ServicePersonTerminal {
   /** @param superFrame the frame that will need to be processed in WindowListener */
   public ServicePersonTerminal(JFrame superFrame) {
     TerminalFrame serviceFrame = new TerminalFrame();
-    serviceFrame.addWindowListener( new TerminalWindowListener(superFrame));
+    serviceFrame.addWindowListener(new TerminalWindowListener(superFrame));
     serviceFrame.setTitle("Service terminal");
     JLabel lastMessage = new JLabel();
     lastMessage.setText("Welcome, you authorized as service personal.");

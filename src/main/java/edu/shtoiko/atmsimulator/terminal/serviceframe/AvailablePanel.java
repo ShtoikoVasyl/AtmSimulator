@@ -1,6 +1,5 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
-import edu.shtoiko.atmsimulator.datawarehouse.DBsimulator;
 import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
 
 import javax.swing.JLabel;

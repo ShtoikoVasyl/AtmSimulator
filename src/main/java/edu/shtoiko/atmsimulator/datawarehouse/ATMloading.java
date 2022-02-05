@@ -19,7 +19,7 @@ public class ATMloading {
     for (int quantity : banknotesToLoad) sumToLoad += quantity;
     int maxBanknotesInATM = 5000;
     int totalQuantityOfBanknotes =
-            DataWarehouseInterface.getFifty()
+        DataWarehouseInterface.getFifty()
             + DataWarehouseInterface.getHundred()
             + DataWarehouseInterface.getTwoHundred()
             + DataWarehouseInterface.getFiveHundred()
