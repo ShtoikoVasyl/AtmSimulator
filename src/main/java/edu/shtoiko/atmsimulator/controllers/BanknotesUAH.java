@@ -67,19 +67,19 @@ public class BanknotesUAH {
    * @return multiplicity of available banknotes
    */
   protected int multiplicity() {
-    if (0 != fifty) {
+    if (fifty != 0) {
       return 50;
     }
-    if (0 != hundred) {
+    if (hundred != 0) {
       return 100;
     }
-    if (0 != twoHundred) {
+    if (twoHundred != 0) {
       return 200;
     }
-    if (0 != fiveHundred) {
+    if (fiveHundred != 0) {
       return 500;
     }
-    if (0 != thousand) {
+    if (thousand != 0) {
       return 1000;
     } else {
       return 0;

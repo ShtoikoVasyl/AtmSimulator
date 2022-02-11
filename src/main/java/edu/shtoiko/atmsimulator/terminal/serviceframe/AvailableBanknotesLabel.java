@@ -1,47 +1,59 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
+import edu.shtoiko.atmsimulator.terminal.mainframe.MainFrame;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Font;
 
-/** panel used to display available banknotes on the available panel */
+/**
+ * panel used to display available banknotes on the available panel
+ */
 public class AvailableBanknotesLabel extends JPanel {
-  private final String name;
+    public static final int width = AvailablePanel.width - (ServicePersonTerminal.indentations * 3) / 2;
+    private final String name;
+    private final JLabel right;
+    private final JLabel left;
 
-  @Override
-  public String getName() {
-    return name;
-  }
+    public AvailableBanknotesLabel(int vertical, String text, String name) {
+        this.name = name;
+        setLayout(null);
+        setBounds(0, vertical, width, ServicePersonTerminal.indentations * 2);
+        right = new JLabel();
+        right.setBounds(width / 3 * 2 - ServicePersonTerminal.indentations, 0,
+                width / 3, ServicePersonTerminal.indentations * 2);
+        right.setText(Integer.toString(DBcontroller.GetBanknotesQuantity(this.name)));
+        right.setHorizontalAlignment(JLabel.RIGHT);
+        right.setFont(new Font("", Font.BOLD, MainFrame.fontSize));
+        left = new JLabel();
+        left.setText(text);
+        left.setFont(new Font("", Font.BOLD, MainFrame.fontSize));
+        left.setBounds(ServicePersonTerminal.indentations, 0,
+                width / 3 * 2 - ServicePersonTerminal.indentations * 2, ServicePersonTerminal.indentations * 2);
 
-  public JLabel getRight() {
-    return right;
-  }
+        left.setForeground(new Color(127, 127, 127));
+        add(left);
+        add(right);
+    }
 
-  public JLabel getLeft() {
-    return left;
-  }
+    @Override
+    public String getName() {
+        return name;
+    }
 
-  private final JLabel right;
-  private final JLabel left;
+    public JLabel getRight() {
+        return right;
+    }
 
-  public AvailableBanknotesLabel(int vertical, String text, String name) {
-    this.name = name;
-    setLayout(null);
-    setBounds(0, vertical, 180, 30);
-    right = new JLabel();
-    right.setBounds(115, 0, 65, 30);
-    right.setText(Integer.toString(DBcontroller.GetBanknotesQuantity(this.name)));
-    right.setHorizontalAlignment(JLabel.RIGHT);
-    left = new JLabel();
-    left.setText(text);
-    left.setBounds(15, 0, 100, 30);
-    left.setForeground(new Color(127, 127, 127));
-    add(left);
-    add(right);
-  }
+    public JLabel getLeft() {
+        return left;
+    }
 
-  /** set text with a quantity of banknotes */
-  public void setQuantity(String text) {
-    right.setText(text);
-  }
+    /**
+     * set text with a quantity of banknotes
+     */
+    public void setQuantity(String text) {
+        right.setText(text);
+    }
 }
