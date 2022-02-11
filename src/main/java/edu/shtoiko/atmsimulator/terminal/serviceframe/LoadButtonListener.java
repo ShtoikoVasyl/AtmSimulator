@@ -40,7 +40,7 @@ public class LoadButtonListener implements ActionListener {
     String input = inputPanel.inputField.getText();
     int sum = Integer.parseInt(input);
     int[] load = new int[5];
-    DBcontroller.loadBanknotes(load, sum, availableBanknotesLabel.name);
+    DBcontroller.loadBanknotes(load, sum, availableBanknotesLabel.getName());
     ATMloading loading = new ATMloading();
     if (loading.ATMload(load)) {
       lastMessage.setText("You load " + sum + " banknotes of " + text + " denomination.");
@@ -51,7 +51,7 @@ public class LoadButtonListener implements ActionListener {
     }
     inputPanel.inputField.setText("");
     availableBanknotesLabel.setQuantity(
-        Integer.toString(DBcontroller.GetBanknotesQuantity(availableBanknotesLabel.name)));
+        Integer.toString(DBcontroller.GetBanknotesQuantity(availableBanknotesLabel.getName())));
     availablePanel.totalBanknotes.setQuantity(
         Integer.toString(DataWarehouseInterface.getTotalBanknotes()));
     loadPanel.loadToMaxLeft.setText(

@@ -6,16 +6,28 @@ import java.awt.Color;
 
 /** panel used to display available banknotes on the available panel */
 public class AvailableBanknotesLabel extends JPanel {
-  protected String name;
-  protected String text;
-  protected JLabel right;
-  protected JLabel left;
+  private final String name;
+
+  @Override
+  public String getName() {
+    return name;
+  }
+
+  public JLabel getRight() {
+    return right;
+  }
+
+  public JLabel getLeft() {
+    return left;
+  }
+
+  private final JLabel right;
+  private final JLabel left;
 
   public AvailableBanknotesLabel(int vertical, String text, String name) {
     this.name = name;
     setLayout(null);
     setBounds(0, vertical, 180, 30);
-    this.text = text;
     right = new JLabel();
     right.setBounds(115, 0, 65, 30);
     right.setText(Integer.toString(DBcontroller.GetBanknotesQuantity(this.name)));

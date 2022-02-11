@@ -29,15 +29,15 @@ public class AvailablePanel extends JPanel {
     thousand = new AvailableBanknotesLabel(180, "Thousand:", "thousand");
     add(thousand);
     totalBanknotes = new AvailableBanknotesLabel(230, "Total quantity:", "totalQuantity");
-    totalBanknotes.right.setText(Integer.toString(DataWarehouseInterface.getTotalBanknotes()));
-    totalBanknotes.right.setFont(new Font("", Font.BOLD, 15));
-    totalBanknotes.right.setForeground(new Color(175, 65, 55));
-    totalBanknotes.right.setHorizontalAlignment(JLabel.RIGHT);
-    totalBanknotes.right.setBounds(115, 0, 65, 30);
-    totalBanknotes.left.setText("Total quantity:");
-    totalBanknotes.left.setFont(new Font("", Font.BOLD, 14));
-    totalBanknotes.left.setForeground(new Color(205, 85, 74));
-    totalBanknotes.left.setBounds(15, 0, 110, 30);
+    totalBanknotes.getRight().setText(Integer.toString(DataWarehouseInterface.getTotalBanknotes()));
+    totalBanknotes.getRight().setFont(new Font("", Font.BOLD, 15));
+    totalBanknotes.getRight().setForeground(new Color(175, 65, 55));
+    totalBanknotes.getRight().setHorizontalAlignment(JLabel.RIGHT);
+    totalBanknotes.getRight().setBounds(115, 0, 65, 30);
+    totalBanknotes.getLeft().setText("Total quantity:");
+    totalBanknotes.getLeft().setFont(new Font("", Font.BOLD, 14));
+    totalBanknotes.getLeft().setForeground(new Color(205, 85, 74));
+    totalBanknotes.getLeft().setBounds(15, 0, 110, 30);
     add(totalBanknotes);
   }
 
