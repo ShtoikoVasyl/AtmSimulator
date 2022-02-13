@@ -7,6 +7,7 @@ import edu.shtoiko.atmsimulator.terminal.listeners.TerminalWindowListener;
 import edu.shtoiko.atmsimulator.terminal.mainframe.MainFrame;
 import edu.shtoiko.atmsimulator.terminal.mainframetemplate.Header;
 import edu.shtoiko.atmsimulator.terminal.mainframetemplate.TerminalFrame;
+import edu.shtoiko.atmsimulator.terminal.mainframetemplate.dataprocessing.GetResource;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,6 +36,7 @@ public class UserTerminal {
 
 
     public UserTerminal(JFrame superFrame) {
+        GetResource getResource = new GetResource();
         TerminalFrame userFrame = new TerminalFrame();
         userFrame.addWindowListener(new TerminalWindowListener(superFrame));
         userFrame.setTitle("User terminal");
@@ -45,7 +47,7 @@ public class UserTerminal {
         lastMessage.setFont(new Font("", Font.BOLD, MainFrame.fontSize + 3));
         String message =
                 ("<html><div style= 'text-align: center;'>What amount do you want to get?<br>Available banknotes: "
-                        + DataWarehouseInterface.getAvailableBanknotes()
+                        + getResource.getAvailableBanknotes()
                         + "</div></html>");
         JLabel text = new JLabel("", SwingConstants.CENTER);
         text.setText(message);
@@ -90,7 +92,7 @@ public class UserTerminal {
                                         + "\n");
                         String message =
                                 ("<html><div style= 'text-align: center;'>What amount do you want to get?<br>Available banknotes: "
-                                        + DataWarehouseInterface.getAvailableBanknotes()
+                                        + getResource.getAvailableBanknotes()
                                         + "</div></html>");
                         text.setText(message);
                     }

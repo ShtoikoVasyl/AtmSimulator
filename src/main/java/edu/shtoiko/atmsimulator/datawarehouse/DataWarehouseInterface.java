@@ -1,107 +1,56 @@
 package edu.shtoiko.atmsimulator.datawarehouse;
 
-public class DataWarehouseInterface {
-
-  /** Close constructor */
-  private DataWarehouseInterface() {}
+public interface DataWarehouseInterface {
 
   /** to load fifty denomination banknotes */
-  protected static void loadFifty(int fifty) {
-    DBsimulator.loadFifty(fifty);
-  }
+  public void loadFifty(int fifty);
 
   /** to load one hundred denomination banknotes */
-  protected static void loadHundred(int hundred) {
-    DBsimulator.loadHundred(hundred);
-  }
+  public void loadHundred(int hundred);
 
   /** to load two hundred denomination banknotes */
-  protected static void loadTwoHundred(int twoHundred) {
-    DBsimulator.loadTwoHundred(twoHundred);
-  }
+  public void loadTwoHundred(int twoHundred);
 
   /** to load five hundred denomination banknotes */
-  protected static void loadFiveHundred(int fiveHundred) {
-    DBsimulator.loadFiveHundred(fiveHundred);
-  }
+  public void loadFiveHundred(int fiveHundred);
 
   /** to load thousands denomination banknotes */
-  protected static void loadThousand(int thousand) {
-    DBsimulator.loadThousand(thousand);
-  }
+  public void loadThousand(int thousand);
 
   /** to withdraw fifty denomination banknotes */
-  public static void takeOutFifty(int fifty) {
-    DBsimulator.takeOutFifty(fifty);
-  }
+  public void takeOutFifty(int fifty);
 
   /** to withdraw one hundred denomination banknotes */
-  public static void takeOutHundred(int hundred) {
-    DBsimulator.takeOutHundred(hundred);
-  }
+  public void takeOutHundred(int hundred);
 
   /** to withdraw two hundred denomination banknotes */
-  public static void takeOutTwoHundred(int twoHundred) {
-    DBsimulator.takeOutTwoHundred(twoHundred);
-  }
+  public void takeOutTwoHundred(int twoHundred);
 
   /** to withdraw five hundred denomination banknotes */
-  public static void takeOutFiveHundred(int fiveHundred) {
-    DBsimulator.takeOutFiveHundred(fiveHundred);
-  }
+  public void takeOutFiveHundred(int fiveHundred);
 
   /** to withdraw thousands denomination banknotes */
-  public static void takeOutThousand(int thousand) {
-    DBsimulator.takeOutThousand(thousand);
-  }
+  public void takeOutThousand(int thousand);
 
   /** to get fifty denomination banknotes */
-  public static int getFifty() {
-    return DBsimulator.getFifty();
-  }
+  public int getFifty();
+
   /** to get one hundred denomination banknotes */
-  public static int getHundred() {
-    return DBsimulator.getHundred();
-  }
+  public int getHundred();
+
   /** to get two hundred denomination banknotes */
-  public static int getTwoHundred() {
-    return DBsimulator.getTwoHundred();
-  }
+  public int getTwoHundred();
+
   /** to get five hundred denomination banknotes */
-  public static int getFiveHundred() {
-    return DBsimulator.getFiveHundred();
-  }
+  public int getFiveHundred();
+
   /** to get thousands denomination banknotes */
-  public static int getThousand() {
-    return DBsimulator.getThousand();
-  }
-
-  /**
-   * Generate message whith available banknotes
-   *
-   * @return String message
-   * @deprecated must be replaced
-   */
-  public static String getAvailableBanknotes() {
-    return DataWarehouseController.getAvailableBanknotes();
-  }
-
-  /**
-   * to get total quantity of banknotes
-   *
-   * @return total quantity
-   * @deprecated must be replaced
-   */
-  public static int getTotalBanknotes() {
-    return DataWarehouseController.getTotalBanknotes();
-  }
+  public int getThousand();
 
   /**
    * write the number of available banknotes in the console
    *
    * @deprecated must be replaced
    */
-  public static int[] getResource() {
-    return DataWarehouseController.getResource();
-  }
+  public int[] getResource();
 }

@@ -1,32 +1,29 @@
 package edu.shtoiko.atmsimulator.controllers;
 
+import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseController;
 import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
 
 /** currency Ukrainian hryvnia(BanknotesUAH) */
 public class BanknotesUAH {
-
   /** number of banknotes denomination of fifty */
   private final int fifty;
-
   /** number of banknotes denomination of one hundred */
   private final int hundred;
-
   /** number of banknotes denomination of two hundred */
   private final int twoHundred;
-
   /** number of banknotes denomination of five hundred */
   private final int fiveHundred;
-
   /** number of banknotes denomination of one thousand */
   private final int thousand;
+  protected DataWarehouseInterface dataWarehouseController = new DataWarehouseController();
 
   /** constructor of BanknotesUAH */
   protected BanknotesUAH() {
-    fifty = DataWarehouseInterface.getFifty();
-    hundred = DataWarehouseInterface.getHundred();
-    twoHundred = DataWarehouseInterface.getTwoHundred();
-    fiveHundred = DataWarehouseInterface.getFiveHundred();
-    thousand = DataWarehouseInterface.getThousand();
+    fifty = dataWarehouseController.getFifty();
+    hundred = dataWarehouseController.getHundred();
+    twoHundred = dataWarehouseController.getTwoHundred();
+    fiveHundred = dataWarehouseController.getFiveHundred();
+    thousand = dataWarehouseController.getThousand();
   }
 
   /**
@@ -54,11 +51,11 @@ public class BanknotesUAH {
    * @deprecated must be replaced with DBsimulator
    */
   private void outputBanknotes(int[] output) {
-    DataWarehouseInterface.takeOutFifty(output[0]);
-    DataWarehouseInterface.takeOutHundred(output[1]);
-    DataWarehouseInterface.takeOutTwoHundred(output[2]);
-    DataWarehouseInterface.takeOutFiveHundred(output[3]);
-    DataWarehouseInterface.takeOutThousand(output[4]);
+    dataWarehouseController.takeOutFifty(output[0]);
+    dataWarehouseController.takeOutHundred(output[1]);
+    dataWarehouseController.takeOutTwoHundred(output[2]);
+    dataWarehouseController.takeOutFiveHundred(output[3]);
+    dataWarehouseController.takeOutThousand(output[4]);
   }
 
   /**

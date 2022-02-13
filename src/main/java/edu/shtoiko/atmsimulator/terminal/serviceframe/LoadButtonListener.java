@@ -1,7 +1,11 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
 import edu.shtoiko.atmsimulator.datawarehouse.ATMloading;
+import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseController;
 import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
+import edu.shtoiko.atmsimulator.terminal.mainframetemplate.dataprocessing.GetResource;
+import edu.shtoiko.atmsimulator.terminal.mainframetemplate.dataprocessing.LoadBanknotes;
+
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -37,10 +41,11 @@ public class LoadButtonListener implements ActionListener {
    */
   @Override
   public void actionPerformed(ActionEvent e) {
+    GetResource getResource = new GetResource();
     String input = inputPanel.inputField.getText();
     int sum = Integer.parseInt(input);
     int[] load = new int[5];
-    DBcontroller.loadBanknotes(load, sum, availableBanknotesLabel.getName());
+    new LoadBanknotes().loadBanknotes(load, sum, availableBanknotesLabel.getName());
     ATMloading loading = new ATMloading();
     if (loading.ATMload(load)) {
       lastMessage.setText("You load " + sum + " banknotes of " + text + " denomination.");
@@ -51,11 +56,9 @@ public class LoadButtonListener implements ActionListener {
     }
     inputPanel.inputField.setText("");
     availableBanknotesLabel.setQuantity(
-        Integer.toString(DBcontroller.GetBanknotesQuantity(availableBanknotesLabel.getName())));
-    availablePanel.totalBanknotes.setQuantity(
-        Integer.toString(DataWarehouseInterface.getTotalBanknotes()));
+        Integer.toString(getResource.GetBanknotesQuantity(availableBanknotesLabel.getName())));
+    availablePanel.totalBanknotes.setQuantity(Integer.toString(getResource.getTotalBanknotes()));
     loadPanel.loadToMaxLeft.setText(
-        Integer.toString(
-            loadPanel.getMaxTotalBanknotes() - DataWarehouseInterface.getTotalBanknotes()));
+        Integer.toString(loadPanel.getMaxTotalBanknotes() - getResource.getTotalBanknotes()));
   }
 }

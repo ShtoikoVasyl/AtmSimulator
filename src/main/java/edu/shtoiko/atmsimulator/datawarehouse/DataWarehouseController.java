@@ -1,61 +1,90 @@
 package edu.shtoiko.atmsimulator.datawarehouse;
 
-public abstract class DataWarehouseController {
-
-  /**
-   * Generate message whith available banknotes
-   *
-   * @return String message
-   * @deprecated must be replaced
-   */
-  protected static String getAvailableBanknotes() {
-    String message = "";
-    if (DataWarehouseInterface.getThousand() != 0) {
-      message += " 1000";
-    }
-    if (DataWarehouseInterface.getFiveHundred() != 0) {
-      message += " 500";
-    }
-    if (DataWarehouseInterface.getTwoHundred() != 0) {
-      message += " 200";
-    }
-    if (DataWarehouseInterface.getHundred() != 0) {
-      message += " 100";
-    }
-    if (DataWarehouseInterface.getFifty() != 0) {
-      message += " 50";
-    }
-    return message;
-  }
-
-  /**
-   * to get total quantity of banknotes
-   *
-   * @return total quantity
-   * @deprecated must be replaced
-   */
-  protected static int getTotalBanknotes() {
-    int total =
-        DataWarehouseInterface.getFifty()
-            + DataWarehouseInterface.getHundred()
-            + DataWarehouseInterface.getTwoHundred()
-            + DataWarehouseInterface.getFiveHundred()
-            + DataWarehouseInterface.getThousand();
-    return total;
-  }
+public class DataWarehouseController implements DataWarehouseInterface {
 
   /**
    * write the number of available banknotes in the console
    *
    * @deprecated must be replaced
    */
-  protected static int[] getResource() {
+  public int[] getResource() {
     int[] resource = new int[5];
-    resource[0] = DataWarehouseInterface.getFifty();
-    resource[1] = DataWarehouseInterface.getHundred();
-    resource[2] = DataWarehouseInterface.getTwoHundred();
-    resource[3] = DataWarehouseInterface.getFiveHundred();
-    resource[4] = DataWarehouseInterface.getThousand();
+    resource[0] = getFifty();
+    resource[1] = getHundred();
+    resource[2] = getTwoHundred();
+    resource[3] = getFiveHundred();
+    resource[4] = getThousand();
     return resource;
+  }
+
+  /** to load fifty denomination banknotes */
+  public void loadFifty(int fifty) {
+    DBsimulator.loadFifty(fifty);
+  }
+
+  /** to load one hundred denomination banknotes */
+  public void loadHundred(int hundred) {
+    DBsimulator.loadHundred(hundred);
+  }
+
+  /** to load two hundred denomination banknotes */
+  public void loadTwoHundred(int twoHundred) {
+    DBsimulator.loadTwoHundred(twoHundred);
+  }
+
+  /** to load five hundred denomination banknotes */
+  public void loadFiveHundred(int fiveHundred) {
+    DBsimulator.loadFiveHundred(fiveHundred);
+  }
+
+  /** to load thousands denomination banknotes */
+  public void loadThousand(int thousand) {
+    DBsimulator.loadThousand(thousand);
+  }
+
+  /** to withdraw fifty denomination banknotes */
+  public void takeOutFifty(int fifty) {
+    DBsimulator.takeOutFifty(fifty);
+  }
+
+  /** to withdraw one hundred denomination banknotes */
+  public void takeOutHundred(int hundred) {
+    DBsimulator.takeOutHundred(hundred);
+  }
+
+  /** to withdraw two hundred denomination banknotes */
+  public void takeOutTwoHundred(int twoHundred) {
+    DBsimulator.takeOutTwoHundred(twoHundred);
+  }
+
+  /** to withdraw five hundred denomination banknotes */
+  public void takeOutFiveHundred(int fiveHundred) {
+    DBsimulator.takeOutFiveHundred(fiveHundred);
+  }
+
+  /** to withdraw thousands denomination banknotes */
+  public void takeOutThousand(int thousand) {
+    DBsimulator.takeOutThousand(thousand);
+  }
+
+  /** to get fifty denomination banknotes */
+  public int getFifty() {
+    return DBsimulator.getFifty();
+  }
+  /** to get one hundred denomination banknotes */
+  public int getHundred() {
+    return DBsimulator.getHundred();
+  }
+  /** to get two hundred denomination banknotes */
+  public int getTwoHundred() {
+    return DBsimulator.getTwoHundred();
+  }
+  /** to get five hundred denomination banknotes */
+  public int getFiveHundred() {
+    return DBsimulator.getFiveHundred();
+  }
+  /** to get thousands denomination banknotes */
+  public int getThousand() {
+    return DBsimulator.getThousand();
   }
 }

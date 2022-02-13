@@ -1,7 +1,7 @@
 package edu.shtoiko.atmsimulator.controllers;
 
 public class ControllerInterface {
-  private ControllerInterface(){}
+  private ControllerInterface() {}
 
   /**
    * create withdraw request redirects to Withdrawing

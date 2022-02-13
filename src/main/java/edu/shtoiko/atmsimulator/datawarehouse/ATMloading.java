@@ -18,18 +18,19 @@ public class ATMloading {
     int sumToLoad = 0;
     for (int quantity : banknotesToLoad) sumToLoad += quantity;
     int maxBanknotesInATM = 5000;
+    DataWarehouseInterface dataWarehouseController = new DataWarehouseController();
     int totalQuantityOfBanknotes =
-        DataWarehouseInterface.getFifty()
-            + DataWarehouseInterface.getHundred()
-            + DataWarehouseInterface.getTwoHundred()
-            + DataWarehouseInterface.getFiveHundred()
-            + DataWarehouseInterface.getThousand();
+        dataWarehouseController.getFifty()
+            + dataWarehouseController.getHundred()
+            + dataWarehouseController.getTwoHundred()
+            + dataWarehouseController.getFiveHundred()
+            + dataWarehouseController.getThousand();
     if (totalQuantityOfBanknotes + sumToLoad < maxBanknotesInATM) {
-      DataWarehouseInterface.loadFifty(banknotesToLoad[0]);
-      DataWarehouseInterface.loadHundred(banknotesToLoad[1]);
-      DataWarehouseInterface.loadTwoHundred(banknotesToLoad[2]);
-      DataWarehouseInterface.loadFiveHundred(banknotesToLoad[3]);
-      DataWarehouseInterface.loadThousand(banknotesToLoad[4]);
+      dataWarehouseController.loadFifty(banknotesToLoad[0]);
+      dataWarehouseController.loadHundred(banknotesToLoad[1]);
+      dataWarehouseController.loadTwoHundred(banknotesToLoad[2]);
+      dataWarehouseController.loadFiveHundred(banknotesToLoad[3]);
+      dataWarehouseController.loadThousand(banknotesToLoad[4]);
       return true;
     }
     return false;
