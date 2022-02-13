@@ -1,8 +1,10 @@
 variables:
   BUILD_DIR: 'build'
+  COVERAGE_DIR: 'target/site/jacoco'
 
 stages:
  - build stage
+ - coverage stage
 
 build:
   variables:
@@ -13,10 +15,10 @@ build:
   stage: build stage
   script:
     - mvn package
-    - rm -rf target/
   only: ['merge_requests', 'master']
   artifacts:
     name: "build artifacts"
     paths:
      - $BUILD_DIR
+     - $COVERAGE_DIR
     expire_in: 10 hrs
