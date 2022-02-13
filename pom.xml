@@ -8,7 +8,7 @@
     <artifactId>ATMsimulator</artifactId>
     <version>0.2</version>
 
-     <properties>
+    <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
@@ -18,6 +18,7 @@
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-jar-plugin</artifactId>
+               <version>3.2.2</version>
                <configuration>
                  <outputDirectory>build</outputDirectory>
                   <archive>
@@ -26,6 +27,19 @@
                     </manifest>
                   </archive>
                </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.9.0</version>
+              <configuration>
+                 <showWarnings>true</showWarnings>
+                 <showDeprecation>true</showDeprecation>
+	               <!-- <failOnWarning>true</failOnWarning> -->
+                 <compilerArgs>
+                   <arg>-Xlint:all</arg>
+                 </compilerArgs>
+              </configuration>
             </plugin>
         </plugins>
     </build>
