@@ -4,7 +4,7 @@ variables:
 stages:
  - build stage
 
-build_linux:
+build:
   variables:
     QT_QPA_PLATFORM: "offscreen"
   dependencies: []
