@@ -1,8 +1,8 @@
 package edu.shtoiko.atmsimulator.terminal.mainframe;
 
+import edu.shtoiko.atmsimulator.controllers.currencyes.UAH;
 import edu.shtoiko.atmsimulator.terminal.serviceframe.ServicePersonTerminal;
 import edu.shtoiko.atmsimulator.terminal.userframe.UserTerminal;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -44,6 +44,8 @@ public class MainFrame {
           @Override
           public void run() {
 
+            ContextHolder contextHolder = new ContextHolder(new UAH());
+
             JFrame mainFrame = new JFrame("ATM");
 
             mainFrame.setBounds(300, 100, 300, 300);
@@ -71,12 +73,12 @@ public class MainFrame {
                     if (user.isSelected()) {
                       text.setText(message + "User");
                       mainFrame.setVisible(false);
-                      UserTerminal user = new UserTerminal(mainFrame);
+                      UserTerminal user = new UserTerminal(mainFrame, contextHolder);
                     }
                     if (service.isSelected()) {
                       text.setText(message + "Service");
                       mainFrame.setVisible(false);
-                      ServicePersonTerminal service = new ServicePersonTerminal(mainFrame);
+                      ServicePersonTerminal service = new ServicePersonTerminal(mainFrame, contextHolder);
                     }
                   }
                 });

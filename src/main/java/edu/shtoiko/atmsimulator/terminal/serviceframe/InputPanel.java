@@ -1,7 +1,6 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
 import edu.shtoiko.atmsimulator.terminal.mainframe.MainFrame;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -13,7 +12,6 @@ public class InputPanel extends JPanel {
   public static final int width = LoadPanel.width - (ServicePersonTerminal.indentations * 3) / 2;
   protected JButton inputButton;
   protected JTextField inputField;
-
   public InputPanel(int horizontal, String text) {
     setVisible(true);
     setLayout(null);

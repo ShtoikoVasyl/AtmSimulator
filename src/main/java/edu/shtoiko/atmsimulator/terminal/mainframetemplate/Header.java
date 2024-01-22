@@ -1,7 +1,6 @@
 package edu.shtoiko.atmsimulator.terminal.mainframetemplate;
 
 import edu.shtoiko.atmsimulator.terminal.mainframe.MainFrame;
-
 import javax.swing.JPanel;
 import java.awt.Color;
 

@@ -1,8 +1,6 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
 import edu.shtoiko.atmsimulator.terminal.mainframe.MainFrame;
-import edu.shtoiko.atmsimulator.terminal.mainframetemplate.dataprocessing.GetResource;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -16,7 +14,8 @@ public class AvailableBanknotesLabel extends JPanel {
   private final JLabel right;
   private final JLabel left;
 
-  public AvailableBanknotesLabel(int vertical, String text, String name) {
+  public AvailableBanknotesLabel(int vertical, String text, String name, Color color) {
+    this.setBackground(color);
     this.name = name;
     setLayout(null);
     setBounds(0, vertical, width, ServicePersonTerminal.indentations * 2);
@@ -26,7 +25,6 @@ public class AvailableBanknotesLabel extends JPanel {
         0,
         width / 3,
         ServicePersonTerminal.indentations * 2);
-    right.setText(Integer.toString(new GetResource().GetBanknotesQuantity(this.name)));
     right.setHorizontalAlignment(JLabel.RIGHT);
     right.setFont(new Font("", Font.BOLD, MainFrame.fontSize));
     left = new JLabel();

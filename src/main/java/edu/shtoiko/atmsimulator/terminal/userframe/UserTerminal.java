@@ -1,13 +1,10 @@
 package edu.shtoiko.atmsimulator.terminal.userframe;
 
-import edu.shtoiko.atmsimulator.controllers.ControllerInterface;
-import edu.shtoiko.atmsimulator.controllers.Withdrawing;
-import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
 import edu.shtoiko.atmsimulator.terminal.listeners.TerminalWindowListener;
+import edu.shtoiko.atmsimulator.terminal.mainframe.ContextHolder;
 import edu.shtoiko.atmsimulator.terminal.mainframe.MainFrame;
 import edu.shtoiko.atmsimulator.terminal.mainframetemplate.Header;
 import edu.shtoiko.atmsimulator.terminal.mainframetemplate.TerminalFrame;
-import edu.shtoiko.atmsimulator.terminal.mainframetemplate.dataprocessing.GetResource;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,6 +17,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * the user frame, which allows you to withdraw money, shows the quantity of banknotes that are
@@ -33,10 +32,9 @@ public class UserTerminal {
     public final static int indentations = MainFrame.width / 40;
     int width = MainFrame.width;
     int height = MainFrame.height;
-
-
-    public UserTerminal(JFrame superFrame) {
-        GetResource getResource = new GetResource();
+    private ContextHolder contextHolder;
+    public UserTerminal(JFrame superFrame, ContextHolder contextHolder) {
+        this.contextHolder = contextHolder;
         TerminalFrame userFrame = new TerminalFrame();
         userFrame.addWindowListener(new TerminalWindowListener(superFrame));
         userFrame.setTitle("User terminal");
@@ -47,7 +45,10 @@ public class UserTerminal {
         lastMessage.setFont(new Font("", Font.BOLD, MainFrame.fontSize + 3));
         String message =
                 ("<html><div style= 'text-align: center;'>What amount do you want to get?<br>Available banknotes: "
-                        + getResource.getAvailableBanknotes()
+                        + contextHolder.getDataWarehouseController().getAvailableBanknotes().keySet().stream()
+                        .sorted()
+                        .map(Object::toString)
+                        .collect(Collectors.joining(", "))
                         + "</div></html>");
         JLabel text = new JLabel("", SwingConstants.CENTER);
         text.setText(message);
@@ -68,31 +69,20 @@ public class UserTerminal {
                     public void actionPerformed(ActionEvent e) {
                         String input = inputSum.getText();
                         int sum = Integer.parseInt(input);
-                        Withdrawing withdrawing = (Withdrawing) ControllerInterface.withdrawRequest(sum);
-                        int[] withdrawBanknotes = withdrawing.getOutputingBanknotes();
-                        String messageUpdate = "Withdraw complete";
 
+                        Map<String, Integer> result = contextHolder.getControllerInterface().withdrawRequest(contextHolder.getDataWarehouseController().getResources(), sum);
+                        String messageUpdate = "Withdraw complete";
                         JOptionPane.showMessageDialog(
                                 new JPanel(),
-                                "withdraw: \n"
-                                        + "fifty - "
-                                        + withdrawBanknotes[0]
-                                        + "\n"
-                                        + "hundred - "
-                                        + withdrawBanknotes[1]
-                                        + "\n"
-                                        + "two hundred - "
-                                        + withdrawBanknotes[2]
-                                        + "\n"
-                                        + "five hundred - "
-                                        + withdrawBanknotes[3]
-                                        + "\n"
-                                        + "thousand - "
-                                        + withdrawBanknotes[4]
-                                        + "\n");
+                                "withdraw: \n" + result.toString().replaceAll("[{}]", "")
+                        );
+                        takeOutBanknotes(result);
                         String message =
                                 ("<html><div style= 'text-align: center;'>What amount do you want to get?<br>Available banknotes: "
-                                        + getResource.getAvailableBanknotes()
+                                        + contextHolder.getDataWarehouseController().getAvailableBanknotes().keySet().stream()
+                                        .sorted()
+                                        .map(Object::toString)
+                                        .collect(Collectors.joining(", "))
                                         + "</div></html>");
                         text.setText(message);
                     }
@@ -100,6 +90,11 @@ public class UserTerminal {
         userFrame.mainPanel.setBackground(new Color(250, 255, 244));
         userFrame.mainPanel.setLayout(null);
         userFrame.mainPanel.add(CreateWithdrawPanel(text, inputSum, get, lastMessage));
+    }
+
+    private boolean takeOutBanknotes(Map<String, Integer> banknotesMap){
+        banknotesMap.forEach((name, value) -> contextHolder.getDataWarehouseController().takeOutByName(name, value));
+        return true;
     }
 
     /**
@@ -113,7 +108,6 @@ public class UserTerminal {
      */
     protected JPanel CreateWithdrawPanel(
             JLabel text, JTextField inputSum, JButton get, JLabel lastMessage) {
-
         JPanel withdrawPanel = new JPanel();
         withdrawPanel.setBackground(new Color(240, 240, 240));
         withdrawPanel.setBounds(width / 6, 0, width / 3 * 2, height - Header.height * 2);

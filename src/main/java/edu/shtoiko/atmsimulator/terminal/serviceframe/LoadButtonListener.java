@@ -1,10 +1,7 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
-import edu.shtoiko.atmsimulator.datawarehouse.ATMloading;
-import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseController;
-import edu.shtoiko.atmsimulator.datawarehouse.DataWarehouseInterface;
-import edu.shtoiko.atmsimulator.terminal.mainframetemplate.dataprocessing.GetResource;
-import edu.shtoiko.atmsimulator.terminal.mainframetemplate.dataprocessing.LoadBanknotes;
+import edu.shtoiko.atmsimulator.datawarehouse.ATMloader;
+import edu.shtoiko.atmsimulator.datawarehouse.StorageProvider;
 
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -19,20 +16,23 @@ public class LoadButtonListener implements ActionListener {
   AvailableBanknotesLabel availableBanknotesLabel;
   JLabel lastMessage;
   String text;
-
+  StorageProvider dataWarehouseController;
+  ATMloader atMloader;
   public LoadButtonListener(
-      AvailablePanel availablePanel,
-      AvailableBanknotesLabel availableBanknotesLabel,
-      LoadPanel loadPanel,
-      InputPanel inputPanel,
-      JLabel lastMessage,
-      String text) {
+          AvailablePanel availablePanel,
+          AvailableBanknotesLabel availableBanknotesLabel,
+          LoadPanel loadPanel,
+          InputPanel inputPanel,
+          JLabel lastMessage,
+          String text, StorageProvider dataWarehouseController) {
+    this.dataWarehouseController = dataWarehouseController;
     this.inputPanel = inputPanel;
     this.availablePanel = availablePanel;
     this.loadPanel = loadPanel;
     this.lastMessage = lastMessage;
     this.availableBanknotesLabel = availableBanknotesLabel;
     this.text = text;
+    atMloader = new ATMloader();
   }
 
   /**
@@ -41,13 +41,13 @@ public class LoadButtonListener implements ActionListener {
    */
   @Override
   public void actionPerformed(ActionEvent e) {
-    GetResource getResource = new GetResource();
+    int totalQuantity = dataWarehouseController.getResources().values()
+            .stream()
+            .mapToInt(Integer::intValue)
+            .sum();
     String input = inputPanel.inputField.getText();
     int sum = Integer.parseInt(input);
-    int[] load = new int[5];
-    new LoadBanknotes().loadBanknotes(load, sum, availableBanknotesLabel.getName());
-    ATMloading loading = new ATMloading();
-    if (loading.ATMload(load)) {
+    if (atMloader.ATMload(sum, availableBanknotesLabel.getName(), dataWarehouseController)) {
       lastMessage.setText("You load " + sum + " banknotes of " + text + " denomination.");
       lastMessage.setForeground(Color.BLACK);
     } else {
@@ -56,9 +56,9 @@ public class LoadButtonListener implements ActionListener {
     }
     inputPanel.inputField.setText("");
     availableBanknotesLabel.setQuantity(
-        Integer.toString(getResource.GetBanknotesQuantity(availableBanknotesLabel.getName())));
-    availablePanel.totalBanknotes.setQuantity(Integer.toString(getResource.getTotalBanknotes()));
+        Integer.toString(dataWarehouseController.getResources().get(availableBanknotesLabel.getName())));
+    availablePanel.totalBanknotes.setQuantity(Integer.toString(totalQuantity));
     loadPanel.loadToMaxLeft.setText(
-        Integer.toString(loadPanel.getMaxTotalBanknotes() - getResource.getTotalBanknotes()));
+        Integer.toString(loadPanel.getMaxTotalBanknotes() - totalQuantity));
   }
 }
