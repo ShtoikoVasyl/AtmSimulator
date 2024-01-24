@@ -1,90 +1,59 @@
 package edu.shtoiko.atmsimulator.datawarehouse;
 
-public class DataWarehouseController implements DataWarehouseInterface {
+import edu.shtoiko.atmsimulator.controllers.currencyes.Currency;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-  /**
-   * write the number of available banknotes in the console
-   *
-   * @deprecated must be replaced
-   */
-  public int[] getResource() {
-    int[] resource = new int[5];
-    resource[0] = getFifty();
-    resource[1] = getHundred();
-    resource[2] = getTwoHundred();
-    resource[3] = getFiveHundred();
-    resource[4] = getThousand();
-    return resource;
-  }
+public class DataWarehouseController implements StorageProvider {
 
-  /** to load fifty denomination banknotes */
-  public void loadFifty(int fifty) {
-    DBsimulator.loadFifty(fifty);
+  private final BanknotesManager banknotesManager;
+  private Currency currency;
+
+  {
+      banknotesManager = new SimpleBanknotesManager();}
+
+  public DataWarehouseController(Currency currency) {
+    this.currency = currency;
   }
 
-  /** to load one hundred denomination banknotes */
-  public void loadHundred(int hundred) {
-    DBsimulator.loadHundred(hundred);
+  public Map<Integer, String> getAvailableBanknotes() {
+    return getCurrencyMap().entrySet()
+            .stream()
+            .filter(entry -> getResources().containsKey(entry.getValue()))
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
   }
 
-  /** to load two hundred denomination banknotes */
-  public void loadTwoHundred(int twoHundred) {
-    DBsimulator.loadTwoHundred(twoHundred);
+    /**
+     * @deprecated
+     */
+  public Map<Integer, String> getCurrencyMap(){
+    return currency.getBanknotesMap();
+  }
+  public Map<String, Integer> getResources(){
+    return banknotesManager.getResource(currency);
   }
 
-  /** to load five hundred denomination banknotes */
-  public void loadFiveHundred(int fiveHundred) {
-    DBsimulator.loadFiveHundred(fiveHundred);
+  public int getTotalQuantity(){
+    return getResources().values()
+            .stream()
+            .mapToInt(Integer::intValue)
+            .sum();
   }
 
-  /** to load thousands denomination banknotes */
-  public void loadThousand(int thousand) {
-    DBsimulator.loadThousand(thousand);
+  @Override
+  public void takeOutByName(String name, Integer value) {
+    banknotesManager.takeOutByName(name, value, currency);
   }
 
-  /** to withdraw fifty denomination banknotes */
-  public void takeOutFifty(int fifty) {
-    DBsimulator.takeOutFifty(fifty);
+  public int getBanknotesQuantityByName(String name){
+    return banknotesManager.getBanknotesQuantityByName(name, currency);
   }
 
-  /** to withdraw one hundred denomination banknotes */
-  public void takeOutHundred(int hundred) {
-    DBsimulator.takeOutHundred(hundred);
+  public void loadBanknotesByName(String name, int value){
+    banknotesManager.loadBanknotesByName(name, value, currency);
   }
 
-  /** to withdraw two hundred denomination banknotes */
-  public void takeOutTwoHundred(int twoHundred) {
-    DBsimulator.takeOutTwoHundred(twoHundred);
-  }
-
-  /** to withdraw five hundred denomination banknotes */
-  public void takeOutFiveHundred(int fiveHundred) {
-    DBsimulator.takeOutFiveHundred(fiveHundred);
-  }
-
-  /** to withdraw thousands denomination banknotes */
-  public void takeOutThousand(int thousand) {
-    DBsimulator.takeOutThousand(thousand);
-  }
-
-  /** to get fifty denomination banknotes */
-  public int getFifty() {
-    return DBsimulator.getFifty();
-  }
-  /** to get one hundred denomination banknotes */
-  public int getHundred() {
-    return DBsimulator.getHundred();
-  }
-  /** to get two hundred denomination banknotes */
-  public int getTwoHundred() {
-    return DBsimulator.getTwoHundred();
-  }
-  /** to get five hundred denomination banknotes */
-  public int getFiveHundred() {
-    return DBsimulator.getFiveHundred();
-  }
-  /** to get thousands denomination banknotes */
-  public int getThousand() {
-    return DBsimulator.getThousand();
+  public void setCurrency(Currency currency) {
+    this.currency = currency;
   }
 }
