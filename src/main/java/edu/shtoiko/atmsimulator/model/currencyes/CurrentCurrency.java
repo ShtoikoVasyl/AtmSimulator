@@ -1,25 +1,17 @@
-package edu.shtoiko.atmsimulator.controllers.currencyes;
+package edu.shtoiko.atmsimulator.model.currencyes;
 
-import java.util.HashMap;
 import java.util.Map;
 
-public class UAH implements Currency {
-    private static Map<Integer, String> banknotesMap;
-     private String fullName;
-     private String shortName;
+public class CurrentCurrency implements Currency {
+    private Map<Integer, String> banknotesMap;
+    private String fullName;
+    private String currencyCode;
 
-    {
-        fullName = "Ukrainian hryvna";
-        shortName = "UAH";
-        banknotesMap = new HashMap<>();
-        banknotesMap.put(50, "fifty");
-        banknotesMap.put(100, "one hundred");
-        banknotesMap.put(200, "two hundred");
-        banknotesMap.put(500, "five hundred");
-        banknotesMap.put(1000, "thousand");
+    public CurrentCurrency(Map<Integer, String> banknotesMap, String fullName, String shortName) {
+        this.banknotesMap = banknotesMap;
+        this.fullName = fullName;
+        this.currencyCode = shortName;
     }
-
-    public UAH() {}
 
     public Map<Integer, String> getBanknotesMap() {
         return banknotesMap;
@@ -52,11 +44,11 @@ public class UAH implements Currency {
         this.fullName = fullName;
     }
 
-    public String getShortName() {
-        return shortName;
+    public String getCurrencyCode() {
+        return currencyCode;
     }
 
-    public void setShortName(String shortName) {
-        this.shortName = shortName;
+    public void setCurrencyCode(String currencyCode) {
+        this.currencyCode = currencyCode;
     }
 }
