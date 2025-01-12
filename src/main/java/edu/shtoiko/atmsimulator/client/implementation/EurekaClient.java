@@ -4,7 +4,6 @@ import edu.shtoiko.atmsimulator.client.DiscoveryClient;
 import edu.shtoiko.atmsimulator.exception.InstancesNotFoundException;
 import edu.shtoiko.atmsimulator.model.discovery.Application;
 import edu.shtoiko.atmsimulator.model.discovery.DiscoveryServerCredentialsHolder;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.shtoiko.atmsimulator.model.discovery.Instance;
 
@@ -18,10 +17,8 @@ import java.util.List;
 
 public class EurekaClient implements DiscoveryClient {
     private final String SERVICE_NAME;
-    private final URL discaveryServerUrl;
-
+    private final URL discoveryServerUrl;
     private final HttpURLConnection connection;
-
     private final String RAW_ADDRESS;
 
     public EurekaClient(DiscoveryServerCredentialsHolder discoveryCredentials, String serviceName) {
@@ -29,7 +26,7 @@ public class EurekaClient implements DiscoveryClient {
         try {
             RAW_ADDRESS = "http://" + discoveryCredentials.getServerHost() + ":" + discoveryCredentials.getServerPort()
                 + "/eureka/apps/" + SERVICE_NAME;
-            this.discaveryServerUrl = new URL(RAW_ADDRESS);
+            this.discoveryServerUrl = new URL(RAW_ADDRESS);
             this.connection = createConnection(discoveryCredentials.getDiscoveryUsername(),
                 discoveryCredentials.getDiscoveryPassword());
         } catch (IOException e) {
@@ -41,7 +38,7 @@ public class EurekaClient implements DiscoveryClient {
         String auth = discoveryUsername + ":" + discoveryPassword;
         String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes());
         String authHeaderValue = "Basic " + encodedAuth;
-        HttpURLConnection newConnection = (HttpURLConnection) discaveryServerUrl.openConnection();
+        HttpURLConnection newConnection = (HttpURLConnection) discoveryServerUrl.openConnection();
         newConnection.setRequestMethod("GET");
         newConnection.setRequestProperty("Authorization", authHeaderValue);
         newConnection.setRequestProperty("Accept", "application/json");

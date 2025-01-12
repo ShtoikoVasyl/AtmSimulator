@@ -33,7 +33,6 @@ public class AuthHandlerInterceptor implements ClientInterceptor {
         return new ForwardingClientCall.SimpleForwardingClientCall<ReqT, RespT>(next.newCall(method, callOptions)) {
             @Override
             public void start(Listener<RespT> responseListener, Metadata headers) {
-                // Додаємо токен до заголовків
                 Metadata.Key<String> tokenKeyMetadata =
                     Metadata.Key.of("Authorization", Metadata.ASCII_STRING_MARSHALLER);
                 headers.put(tokenKeyMetadata, "Bearer " + token.get());
