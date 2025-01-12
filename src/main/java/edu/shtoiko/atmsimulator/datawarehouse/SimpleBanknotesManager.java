@@ -1,39 +1,52 @@
 package edu.shtoiko.atmsimulator.datawarehouse;
 
-import edu.shtoiko.atmsimulator.controllers.currencyes.Currency;
+import edu.shtoiko.atmsimulator.model.currencyes.Currency;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
-public class SimpleBanknotesManager implements BanknotesManager{
+public class SimpleBanknotesManager implements BanknotesManager {
 
-    Map<String, Integer> availableBanknotesMap;
+    private Map<String, Integer> availableBanknotesMap;
 
-    {
-        availableBanknotesMap = new HashMap<>();
-        availableBanknotesMap.put("thousand", 10);
-        availableBanknotesMap.put("five hundred", 20);
-        availableBanknotesMap.put("two hundred", 30);
-        availableBanknotesMap.put("one hundred", 40);
-        availableBanknotesMap.put("fifty", 50);
+    public SimpleBanknotesManager(Currency currency) {
+        initAvailableBanknotesMap(currency);
     }
 
-    public int getBanknotesQuantityByName(String name, Currency currency){
+    private void initAvailableBanknotesMap(Currency currency) {
+        availableBanknotesMap = convertMap(currency.getBanknotesMap());
+
+    }
+
+    public static Map<String, Integer> convertMap(Map<Integer, String> originalMap) {
+        Map<String, Integer> newMap = new HashMap<>();
+        Random random = new Random();
+
+        for (String value : originalMap.values()) {
+            int randomValue = 10 * (random.nextInt(6) + 2);
+            newMap.put(value, randomValue);
+        }
+        return newMap;
+    }
+
+    public int getBanknotesQuantityByName(String name, Currency currency) {
         return getQuantityFromAvailableMap(name);
     }
 
-    public void loadBanknotesByName(String name, int value, Currency currency){
+    public void loadBanknotesByName(String name, int value, Currency currency) {
         availableBanknotesMap.put(name, getQuantityFromAvailableMap(name) + value);
     }
 
-    public void takeOutByName(String name, int value, Currency currency){
+    public void takeOutByName(String name, int value, Currency currency) {
         availableBanknotesMap.put(name, getQuantityFromAvailableMap(name) - value);
     }
 
-    private int getQuantityFromAvailableMap(String name){
+    private int getQuantityFromAvailableMap(String name) {
         int result;
-        try { result = availableBanknotesMap.get(name);
-        } catch (NullPointerException e){
+        try {
+            result = availableBanknotesMap.get(name);
+        } catch (NullPointerException e) {
             return 0;
         }
         return result;
