@@ -1,20 +1,20 @@
 package edu.shtoiko.atmsimulator.datawarehouse;
 
-import edu.shtoiko.atmsimulator.controllers.currencyes.Currency;
-
 import java.util.Map;
 
 public interface StorageProvider {
 
-  public Map<Integer, String> getAvailableBanknotes();
+    Map<Integer, String> getAvailableBanknotes();
 
-  Map<Integer, String> getCurrencyMap();
+    Map<Integer, String> getCurrencyMap();
 
-  public int getTotalQuantity();
+    int getTotalQuantity();
 
-  public Map<String, Integer> getResources();
+    Map<String, Integer> getResourcesByValueNames();
 
-  public void loadBanknotesByName(String name, int value);
+    Map<Integer, Integer> getResourcesByValue();
 
-  void takeOutByName(String name, Integer value);
+    void loadBanknotesByName(String name, int value);
+
+    void takeOutByName(String name, Integer value);
 }

@@ -1,6 +1,6 @@
 package edu.shtoiko.atmsimulator.terminal.serviceframe;
 
-import edu.shtoiko.atmsimulator.controllers.currencyes.Currency;
+import edu.shtoiko.atmsimulator.model.currencyes.Currency;
 import edu.shtoiko.atmsimulator.terminal.mainframe.MainFrame;
 import edu.shtoiko.atmsimulator.terminal.mainframetemplate.MainTerminalPanel;
 import javax.swing.JLabel;
@@ -14,61 +14,65 @@ import java.util.stream.Collectors;
 
 /** a panel showing all available banknotes and their total quantity */
 public class AvailablePanel extends JPanel {
-  public static final int width = MainTerminalPanel.width / 5 * 2;
-  public static final int height = MainTerminalPanel.height / 5 * 3;
-  protected AvailableBanknotesLabel totalBanknotes;
-  private List<AvailableBanknotesLabel> labels;
-  public List<AvailableBanknotesLabel> getLabels() {
-    return labels;
-  }
-  public AvailablePanel(Map<String, Integer> availableBanknotes, Currency currency) {
-    Color backgroundColor = new Color(250, 255, 244);
-    setLayout(null);
-    setBounds(
-        ServicePersonTerminal.indentations,
-        ServicePersonTerminal.indentations * 4,
-        width - (ServicePersonTerminal.indentations * 3) / 2,
-        height);
+    public static final int width = MainTerminalPanel.width / 5 * 2;
+    public static final int height = MainTerminalPanel.height / 5 * 3;
+    protected AvailableBanknotesLabel totalBanknotes;
+    private List<AvailableBanknotesLabel> labels;
 
-    labels = new ArrayList<>();
-
-    int i = 1;
-    List<String> available = availableBanknotes.keySet().stream().sorted(currency::compareBanknotes).collect(Collectors.toList());
-    for(String name : available){
-      AvailableBanknotesLabel label = new AvailableBanknotesLabel(height / (availableBanknotes.size() + 2 ) * i - ServicePersonTerminal.indentations,
-              name, name, backgroundColor);
-      label.setQuantity(String.valueOf(availableBanknotes.get(name)));
-
-      labels.add(label);
-      add(label);
-      i++;
+    public List<AvailableBanknotesLabel> getLabels() {
+        return labels;
     }
-    totalBanknotes =
-        new AvailableBanknotesLabel(height / 7 * 6, "Total quantity:", "totalQuantity", backgroundColor);
-    totalBanknotes.getRight().setText(Integer.toString(availableBanknotes.values()
+
+    public AvailablePanel(Map<String, Integer> availableBanknotes, Currency currency) {
+        Color backgroundColor = new Color(250, 255, 244);
+        setLayout(null);
+        setBounds(
+            ServicePersonTerminal.INDENTATIONS,
+            ServicePersonTerminal.INDENTATIONS * 4,
+            width - (ServicePersonTerminal.INDENTATIONS * 3) / 2,
+            height);
+
+        labels = new ArrayList<>();
+
+        int i = 1;
+        List<String> available =
+            availableBanknotes.keySet().stream().sorted(currency::compareBanknotes).collect(Collectors.toList());
+        for (String name : available) {
+            AvailableBanknotesLabel label = new AvailableBanknotesLabel(
+                height / (availableBanknotes.size() + 2) * i - ServicePersonTerminal.INDENTATIONS,
+                name, name, backgroundColor);
+            label.setQuantity(String.valueOf(availableBanknotes.get(name)));
+
+            labels.add(label);
+            add(label);
+            i++;
+        }
+        totalBanknotes =
+            new AvailableBanknotesLabel(height / 7 * 6, "Total quantity:", "totalQuantity", backgroundColor);
+        totalBanknotes.getRight().setText(Integer.toString(availableBanknotes.values()
             .stream()
             .mapToInt(Integer::intValue)
             .sum()));
-    totalBanknotes.getRight().setFont(new Font("", Font.BOLD, MainFrame.fontSize + 5));
-    totalBanknotes.getRight().setForeground(new Color(175, 65, 55));
-    totalBanknotes.getRight().setHorizontalAlignment(JLabel.RIGHT);
-    totalBanknotes
-        .getRight()
-        .setBounds(
-            width / 3 * 2 - ServicePersonTerminal.indentations * 2,
-            0,
-            width / 3,
-            ServicePersonTerminal.indentations * 2);
-    totalBanknotes.getLeft().setText("Total quantity:");
-    totalBanknotes.getLeft().setFont(new Font("", Font.BOLD, MainFrame.fontSize + 2));
-    totalBanknotes.getLeft().setForeground(new Color(205, 85, 74));
-    totalBanknotes
-        .getLeft()
-        .setBounds(
-            ServicePersonTerminal.indentations,
-            0,
-            width / 3 * 2 - ServicePersonTerminal.indentations * 2,
-            ServicePersonTerminal.indentations * 2);
-    add(totalBanknotes);
-  }
+        totalBanknotes.getRight().setFont(new Font("", Font.BOLD, MainFrame.FONT_SIZE + 5));
+        totalBanknotes.getRight().setForeground(new Color(175, 65, 55));
+        totalBanknotes.getRight().setHorizontalAlignment(JLabel.RIGHT);
+        totalBanknotes
+            .getRight()
+            .setBounds(
+                width / 3 * 2 - ServicePersonTerminal.INDENTATIONS * 2,
+                0,
+                width / 3,
+                ServicePersonTerminal.INDENTATIONS * 2);
+        totalBanknotes.getLeft().setText("Total quantity:");
+        totalBanknotes.getLeft().setFont(new Font("", Font.BOLD, MainFrame.FONT_SIZE + 2));
+        totalBanknotes.getLeft().setForeground(new Color(205, 85, 74));
+        totalBanknotes
+            .getLeft()
+            .setBounds(
+                ServicePersonTerminal.INDENTATIONS,
+                0,
+                width / 3 * 2 - ServicePersonTerminal.INDENTATIONS * 2,
+                ServicePersonTerminal.INDENTATIONS * 2);
+        add(totalBanknotes);
+    }
 }
