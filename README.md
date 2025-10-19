@@ -1,29 +1,74 @@
+# 💳 ATMsimulator
 
-This is a project to learn Java, additional tools and frameworks. In this project I am going to gain basic knowledge of Git, teamwork skills.
+**ATMsimulator** is an educational project that simulates the operation of an ATM and communicates with the **BankSim** server via gRPC.  
+The goal is to practice client-server architecture, gRPC communication, and GUI development with Java Swing.
+
 ---
 
-#### The main tasks to learning: 
-	* OOP;
-	* Java Core;
-	* Colection framevork;
-	* MAVEN;
-	* Relational Database;
-	* JDBC;
-	* Hibernate/JPA;
-	* Java EE;
-	* Spring framework (Core, Boot, MVC, Data JPA);
+## 🚀 Features
+
+- Login using card number and PIN
+- Withdraw funds
+- Validate user input and handle errors
+- Communicate with **BankSim** server via gRPC
+- User-friendly Swing interface
+
 ---
 
-___Great thanks___ to [@kulch.roman](https://gitlab.com/kulch.roman) for help with learning and for mentoring!
+## ⚙️ How to Run
+
+### Requirements
+- Java 8+
+- Maven
+- Running Discovery server (**13.36.126.221:8001**)
+
+### Run Options
+
+#### 🔹 Run with arguments
+```
+java -jar target/ATMsimulator.jar <terminalId> <password> <signature> <currencyCode>
+```
+**Example:**
+```
+java -jar target/ATMsimulator.jar 683189 1123 u2hxY9zQhRF//dRQSfb66Q== EUR
+```
+
+#### 🔹 Interactive mode
+```
+java -jar target/ATMsimulator.jar
+```
+When started without arguments, the program will ask for:
+- Currency (`EUR`, `USD`, `UAH`, `DKK`, `SEK`)
+- Terminal credentials (ID, password, signature)
+
+You can simply press **Enter** to use default values:
+- Terminal ID: `683189`
+- Password: `1123`
+- Signature: `u2hxY9zQhRF//dRQSfb66Q==`
+
+#### 🔹 Run via Maven
+```
+mvn clean package
+mvn exec:java -Dexec.mainClass="edu.shtoiko.atmsimulator.terminal.Main" -Dexec.args="683189 1123 u2hxY9zQhRF//dRQSfb66Q== EUR"
+```
+
+> You can change the Discovery host or ports in  
+> `edu.shtoiko.atmsimulator.terminal.Main` class.
+
 ---
 
-###### In project we use [google-java-format](https://github.com/google/google-java-format) for code formatting.
+## 🧠 Technologies
+
+| Component | Technology |
+|------------|-------------|
+| Language | Java 8 |
+| GUI | Swing |
+| Communication | gRPC |
+| Build Tool | Maven |
+
 ---
 
-#### Building
-###### Maven
-Instal [MAVEN](https://maven.apache.org) and run it with:
+## 👨‍💻 Author
 
-	 mvn package
-
-
+**Vasyl Shtoiko**  
+🌐 [shtoiko.dev](https://shtoiko.dev)
